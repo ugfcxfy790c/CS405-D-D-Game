@@ -2,4 +2,6 @@
 
 Developed by Mitchell Carson, Eli Orbach, and Han Yan
 
-The game is a dungeon crawler where the player moves through a series of randomly generated rooms containing monsters and items. 
+The game is a dungeon crawler where the player moves through a series of randomly generated rooms containing monsters and items.
+
+Create a new branch to store your work. DO NOT commit to main.
