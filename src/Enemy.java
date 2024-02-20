@@ -1,3 +1,5 @@
 public class Enemy {
-    //hello world!
+    
+    private String type;
+    private String difficu
 }
