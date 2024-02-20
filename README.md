@@ -1,4 +1,4 @@
-# D&D Game for the CS40 Final Project
+# D&D Game for the CS405 Final Project
 
 Developed by Mitchell Carson, Eli Orbach, and Han Yan
 
