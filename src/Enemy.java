@@ -44,10 +44,10 @@ public static void main(String[] args) {
         else if (type == DamageType.ELECTRICITY) {
             return this.res[4];
         }
-        else {
+        else if (type == DamageType.POISON) {
             return this.res[5];
         }
-
+        return 1.0;
     }
 
     public int getHealth() {
