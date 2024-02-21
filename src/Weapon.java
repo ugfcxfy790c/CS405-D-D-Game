@@ -50,7 +50,10 @@ public class Weapon {
     //potentially a player curse could be implemented here by increasing the multiplier of the subtraction
     public double doDamage(Enemy monster) {
         int roll = Enemy.diceRoller(20);
-        return (this.baseDamage / 20.0) * roll * monster.getRes(this.type);
+        if (roll > monster.getAC()) {
+            return (this.baseDamage / 20.0) * roll * monster.getRes(this.type);
+        }
+        return 0;
     }
 
 }
