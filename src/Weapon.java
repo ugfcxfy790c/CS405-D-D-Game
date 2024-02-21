@@ -18,7 +18,7 @@ public class Weapon {
             this.baseDamage = 80;
         else if (this.name == "axe")
             this.baseDamage = 100;
-        else if (this.name.equals("cudgel"))
+        else if (this.name.equals("club"))
             this.baseDamage = 40;
         else if (this.name == "spear")
             this.baseDamage = 70;
