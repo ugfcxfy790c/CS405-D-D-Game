@@ -1,6 +1,9 @@
+import java.util.Random;
+
 public class Weapon {
     private String name;
     private int level;
+    private int baseDamage;
     //calls the DamageType enum to determine type.
     DamageType type;
 
@@ -32,4 +35,12 @@ public class Weapon {
     public void levelUp() {
         this.level ++;
     }
+
+    //will add player armor class when available
+    //potentially a player curse could be implemented here by increasing the multiplier of the subtraction
+    public double doDamage(Enemy monster) {
+        int roll = Enemy.diceRoller(20);
+        return (this.baseDamage / 20.0) * roll * monster.getRes(this.type);
+    }
+
 }
