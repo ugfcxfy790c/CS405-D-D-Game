@@ -61,17 +61,17 @@ public class Weapon {
         }
         else {
             if (this.name == "sword")
-                this.baseDamage *= 1.2;
+                this.baseDamage *= 1.1;
             else if (this.name == "poison dagger")
-                this.baseDamage *= 1.2;
+                this.baseDamage *= 1.1;
             else if (this.name.equals("club"))
-                this.baseDamage *= 1.2;
+                this.baseDamage *= 1.1;
             else if (this.name == "spear")
-                this.baseDamage *= 1.2;
+                this.baseDamage *= 1.1;
             else if (this.name == "torch")
-                this.baseDamage *= 1.2;
+                this.baseDamage *= 1.1;
             else if (this.name == "taser")
-                this.baseDamage *= 1.2;
+                this.baseDamage *= 1.1;
         }
     }
 
