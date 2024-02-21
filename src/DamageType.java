@@ -3,5 +3,6 @@ public enum DamageType {
     PIERCING,
     SLASHING,
     FIRE,
-    ELECTRICITY
+    ELECTRICITY,
+    POISON
 }
