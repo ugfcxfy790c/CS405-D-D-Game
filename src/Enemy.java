@@ -28,7 +28,37 @@ public static void main(String[] args) {
         return this.difficulty;
     }
     
-    public double getBludgeoningRes() {
-        return this.resistances[0];
+    public double getRes(DamageType type) {
+        if (type == DamageType.BLUDGEONING) {
+            return this.res[0];
+        }
+        else if (type == DamageType.PIERCING) {
+            return this.res[1];
+        }
+        else if (type == DamageType.SLASHING) {
+            return this.res[2];
+        }
+        else if (type == DamageType.FIRE) {
+            return this.res[3];
+        }
+        else if (type == DamageType.ELECTRICITY) {
+            return this.res[4];
+        }
+        else {
+            return this.res[5];
+        }
+
+    }
+
+    public int getHealth() {
+        return this.health;
+    }
+
+    public int getAtk() {
+        return this.atk;
+    }
+
+    public int getMaxDmg() {
+        return this.maxDmg;
     }
 }
