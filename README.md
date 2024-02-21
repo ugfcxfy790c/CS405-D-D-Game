@@ -4,7 +4,7 @@ Developed by Mitchell Carson, Eli Orbach, and Han Yan
 
 # Project Description:
 
-	We will make a text-based dungeon crawler based off of D&D 5th Edition. The player will use text-based inputs to navigate 
+ We will make a text-based dungeon crawler based off of D&D 5th Edition. The player will use text-based inputs to navigate 
  through a series of rooms and fight against randomly generated monsters. Each room will have one monster in it. The player 
  will have a small variety of weapons, which they can use to attack and deal damage to the monsters. The fighting system will 
  work just like D&D, with an initial attack check to determine if you hit the monster with your attack and a subsequent damage 
