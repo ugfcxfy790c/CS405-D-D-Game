@@ -5,8 +5,9 @@ public class Room {
 
     private int difficulty;
     private Enemy enemy;
-    private Item item;
-    private Weapon weapon;
+    private Item[] item;
+    private Weapon[] weapon;
+
 
     //Change to select random enemy and item based on difficulty
     public Room(int difficulty) {
@@ -16,8 +17,22 @@ public class Room {
         this.weapon = weapon;
     }
 
+    public int getDifficulty() {
+        return this.difficulty;
+    }
+
+    public Enemy getEnemy() {
+        return this.enemy;
+    }
+
+    public Item[] getItem() {
+        return this.item;
+    }
+
+    public Weapon[] getWeapon() {
+        return weapon;
+    }
+
     
-
-
 
 }
