@@ -51,7 +51,7 @@ public class Weapon {
     public double doDamage(Enemy monster) {
         int roll = Enemy.diceRoller(20);
         if (roll > monster.getAC()) {
-            return (this.baseDamage / 20.0) * roll * monster.getRes(this.type);
+            return (this.baseDamage / 20.0) * Enemy.diceRoller(20) * monster.getRes(this.type);
         }
         return 0;
     }

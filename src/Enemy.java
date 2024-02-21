@@ -85,9 +85,9 @@ public static void main(String[] args) {
     }
 
     //Makes an attack roll and does damage to the player if neccesary
-    public int dmgPlayer(int aC) {
+    public int dmgPlayer(int pAC) {
         int roll = diceRoller(20) + atk;
-        if (roll >= aC) {
+        if (roll >= pAC) {
             return dmgRollPlayer();
         }
         return 0;
