@@ -7,11 +7,11 @@ public class Player{
     private int atk;
     private double[] resistances;
 
-    public Player(health, aC, atk) {
+    public Player(double health, int aC, int atk) {
         this.health = health;
         this.aC = aC;
         this.atk = atk;
-        this.resistances = {1.0, 1.0, 1.0, 1.0, 1.0, 1.0};
+        this.resistances = new double[] {1.0, 1.0, 1.0, 1.0, 1.0, 1.0};
     }
 
     public int getAC() {
