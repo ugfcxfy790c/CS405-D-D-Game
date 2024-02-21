@@ -1,5 +1,3 @@
-import java.util.Random;
-
 public class Weapon {
     private String name;
     private int level;
@@ -13,6 +11,18 @@ public class Weapon {
         this.name = name;
         this.level = level;
         this.type = buff;
+        //define base damage of each weapon type
+        if (this.name == "fists")
+            this.baseDamage = 20;
+        else if (this.name == "sword")
+            this.baseDamage = 80;
+        else if (this.name == "axe")
+            this.baseDamage = 100;
+        else if (this.name.equals("cudgel"))
+            this.baseDamage = 40;
+        else if (this.name == "spear")
+            this.baseDamage = 70;
+        //change name based on non-basic types
         if (this.type == DamageType.FIRE)
             this.name += " of fire";
         else if (this.type == DamageType.ELECTRICITY)
