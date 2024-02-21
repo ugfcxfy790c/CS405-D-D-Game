@@ -7,7 +7,7 @@ public class Player{
     private int atk;
     private double[] resistances;
 
-    public Player(health, aC, atk) {
+    public Player(double health, int aC, int atk) {
         this.health = health;
         this.aC = aC;
         this.atk = atk;

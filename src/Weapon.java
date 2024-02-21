@@ -7,28 +7,29 @@ public class Weapon {
 
     //weapon has name buff and level. Constructor will interpret the rest
     //input something like ("sword", 0, SLASHING)
-    public Weapon(String name, int level, DamageType buff) {
+    public Weapon(String name) {
         this.name = name;
-        this.level = level;
-        this.type = buff;
+        this.level = 0;
+
+        if (this.name == "sword")
+            this.type = DamageType.SLASHING;
+        else if (this.name == "poisoned dagger")
+            this.type = DamageType.POISON;
+        else if (this.name.equals("club"))
+            this.type = DamageType.BLUDGEONING;
+        else if (this.name == "spear")
+            this.type = DamageType.PIERCING;
+        else if (this.name == "fists")
+            this.type = DamageType.BLUDGEONING;
+        else if (this.name == "torch")
+            this.type = DamageType.FIRE;
+        else if (this.name == "taser")
+            this.type = DamageType.ELECTRICITY;
         //define base damage of each weapon type
         if (this.name == "fists")
             this.baseDamage = 20;
-        else if (this.name == "sword")
-            this.baseDamage = 80;
-        else if (this.name == "axe")
-            this.baseDamage = 100;
-        else if (this.name.equals("club"))
-            this.baseDamage = 40;
-        else if (this.name == "spear")
-            this.baseDamage = 70;
-        //change name based on non-basic types
-        if (this.type == DamageType.FIRE)
-            this.name += " of fire";
-        else if (this.type == DamageType.ELECTRICITY)
-            this.name += " of electricity";
-        else if (this.type == DamageType.POISON)
-            this.name = "poisoned " + this.name;
+        else
+            this.baseDamage = 0;
     }
 
     public String getName() {
@@ -44,6 +45,34 @@ public class Weapon {
 
     public void levelUp() {
         this.level ++;
+        if (this.level == 1) {
+            if (this.name == "sword")
+                this.baseDamage = 80;
+            else if (this.name == "poison dagger")
+                this.baseDamage = 100;
+            else if (this.name.equals("club"))
+                this.baseDamage = 40;
+            else if (this.name == "spear")
+                this.baseDamage = 70;
+            else if (this.name == "torch")
+                this.baseDamage = 60;
+            else if (this.name == "taser")
+                this.baseDamage = 70;
+        }
+        else {
+            if (this.name == "sword")
+                this.baseDamage *= 1.2;
+            else if (this.name == "poison dagger")
+                this.baseDamage *= 1.2;
+            else if (this.name.equals("club"))
+                this.baseDamage *= 1.2;
+            else if (this.name == "spear")
+                this.baseDamage *= 1.2;
+            else if (this.name == "torch")
+                this.baseDamage *= 1.2;
+            else if (this.name == "taser")
+                this.baseDamage *= 1.2;
+        }
     }
 
     //will add player armor class when available
