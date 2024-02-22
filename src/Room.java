@@ -24,5 +24,7 @@ public class Room {
     public static void fight(Enemy[] eList) {
         Enemy enemy = Enemy.spawnEnemy(eList);
         System.out.println("A " + enemy.getEType() + " emerges from the shadows!");
+        //Player's turn function, pass in enemy
+        enemy.dmgPlayer(player.Player.getAC());
     }
 }
