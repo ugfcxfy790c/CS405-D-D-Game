@@ -1,7 +1,7 @@
 public class Weapon {
     private String name;
     private int level;
-    private int baseDamage;
+    private double baseDamage;
     //calls the DamageType enum to determine type.
     DamageType type;
 
@@ -11,22 +11,17 @@ public class Weapon {
         this.name = name;
         this.level = 0;
 
-        if (this.name == "sword")
-            this.type = DamageType.SLASHING;
-        else if (this.name == "poisoned dagger")
-            this.type = DamageType.POISON;
-        else if (this.name.equals("club"))
-            this.type = DamageType.BLUDGEONING;
-        else if (this.name == "spear")
-            this.type = DamageType.PIERCING;
-        else if (this.name == "fists")
-            this.type = DamageType.BLUDGEONING;
-        else if (this.name == "torch")
-            this.type = DamageType.FIRE;
-        else if (this.name == "taser")
-            this.type = DamageType.ELECTRICITY;
+        switch (this.name) {
+            case "sword" -> this.type = DamageType.SLASHING;
+            case "poisoned dagger" -> this.type = DamageType.POISON;
+            case "club" -> this.type = DamageType.BLUDGEONING;
+            case "spear" -> this.type = DamageType.PIERCING;
+            case "fists" -> this.type = DamageType.BLUDGEONING;
+            case "torch" -> this.type = DamageType.FIRE;
+            case "taser" -> this.type = DamageType.ELECTRICITY;
+        }
         //define base damage of each weapon type
-        if (this.name == "fists")
+        if (this.name.equals("fists"))
             this.baseDamage = 20;
         else
             this.baseDamage = 0;
@@ -46,32 +41,17 @@ public class Weapon {
     public void levelUp() {
         this.level ++;
         if (this.level == 1) {
-            if (this.name == "sword")
-                this.baseDamage = 80;
-            else if (this.name == "poison dagger")
-                this.baseDamage = 100;
-            else if (this.name.equals("club"))
-                this.baseDamage = 40;
-            else if (this.name == "spear")
-                this.baseDamage = 70;
-            else if (this.name == "torch")
-                this.baseDamage = 60;
-            else if (this.name == "taser")
-                this.baseDamage = 70;
+            switch (this.name) {
+                case "sword" -> this.baseDamage = 80;
+                case "poison dagger" -> this.baseDamage = 100;
+                case "club" -> this.baseDamage = 40;
+                case "spear" -> this.baseDamage = 70;
+                case "torch" -> this.baseDamage = 60;
+                case "taser" -> this.baseDamage = 70;
+            }
         }
         else {
-            if (this.name == "sword")
-                this.baseDamage *= 1.1;
-            else if (this.name == "poison dagger")
-                this.baseDamage *= 1.1;
-            else if (this.name.equals("club"))
-                this.baseDamage *= 1.1;
-            else if (this.name == "spear")
-                this.baseDamage *= 1.1;
-            else if (this.name == "torch")
-                this.baseDamage *= 1.1;
-            else if (this.name == "taser")
-                this.baseDamage *= 1.1;
+            this.baseDamage *= 1.1;
         }
     }
 
