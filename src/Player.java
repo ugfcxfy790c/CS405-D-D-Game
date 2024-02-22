@@ -46,7 +46,6 @@ public class Player {
         return this.inventory;
     }
 
-
     public double getRes(DamageType type) {
         if (type == DamageType.BLUDGEONING) {
             return this.res[0];
@@ -72,6 +71,8 @@ public class Player {
     public int damageToEnemy(Enemy enemy) {
         double enemyHealth = enemy.getHealth();
         double enemyResistance = enemy.getRes(DamageType.BLUDGEONING);
+
+
         return 0;
     }
 
