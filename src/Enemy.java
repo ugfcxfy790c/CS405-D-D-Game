@@ -5,7 +5,6 @@ public class Enemy {
 public static void main(String[] args) {
 
 }   
-
     private String EType;
     private double difficulty;
     private double[] res;

@@ -1,4 +1,6 @@
 public class Main {
+
+    Player player = new Player(100, 15, 5);
     public static void main(String[] Args) {
         int gameLength = 30;
         for (int i = 0; i < gameLength; i++) {
