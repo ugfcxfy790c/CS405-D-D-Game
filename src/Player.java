@@ -20,6 +20,11 @@ public class Player {
         this.resistances = new double[] { 1.0, 1.0, 1.0, 1.0, 1.0, 1.0 };
     }
 
+    public static int diceRoller(int nSides) {
+        Random dice = new Random();
+        return dice.nextInt(nSides) + 1;
+    }
+
     public Player getPlayer(){
         return this.player;
     }
@@ -28,17 +33,12 @@ public class Player {
         return this.aC;
     }
 
-    public static int diceRoller(int nSides) {
-        Random dice = new Random();
-        return dice.nextInt(nSides) + 1;
-    }
-
     public int getAtk() {
         return this.atk;
     }
 
     public int damageToEnemy(Enemy enemy) {
-        return 
+        return 0;
     }
 
     public void damageToPlayer(double damage) {
