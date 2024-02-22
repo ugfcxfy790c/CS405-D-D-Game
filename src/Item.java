@@ -30,6 +30,18 @@ public class Item {
         return this.power;
     }
 
-    
+    public void use(Player user) {
+        switch (this.type) {
+            case DamageType.BLUDGEONING -> this.name = "potion of bludgeoning resistance";
+            case DamageType.ELECTRICITY -> this.name = "potion of electricity resistance";
+            case DamageType.FIRE -> this.name = "potion of fire resistance";
+            case DamageType.POISON -> this.name = "potion of immunity";
+            case DamageType.SLASHING -> this.name = "chainmail armor";
+            case DamageType.PIERCING -> this.name = "shield";
+            case DamageType.HEALTH -> this.name = "potion of healing";
+            case DamageType.INVINCIBILITY -> this.name = "spell of invincibility";
+            case DamageType.POWER -> this.name = "ring of power";
+        }
+    }
 
 }
