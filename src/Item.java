@@ -17,6 +17,19 @@ public class Item {
             case DamageType.SLASHING -> this.name = "chainmail armor";
             case DamageType.PIERCING -> this.name = "shield";
             case DamageType.HEALTH -> this.name = "potion of healing";
+            case DamageType.INVINCIBILITY -> this.name = "spell of invincibility";
+            case DamageType.POWER -> this.name = "ring of power";
         }
     }
+
+    public DamageType getType() {
+        return this.type;
+    }
+
+    public double getPower() {
+        return this.power;
+    }
+
+    
+
 }
