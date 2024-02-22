@@ -1,34 +1,30 @@
 public class Weapon {
     private String name;
     private int level;
-    private int baseDamage;
+    private double baseDamage;
     //calls the DamageType enum to determine type.
     DamageType type;
 
     //weapon has name buff and level. Constructor will interpret the rest
     //input something like ("sword", 0, SLASHING)
-    public Weapon(String name, int level, DamageType buff) {
+    public Weapon(String name) {
         this.name = name;
-        this.level = level;
-        this.type = buff;
+        this.level = 0;
+
+        switch (this.name) {
+            case "sword" -> this.type = DamageType.SLASHING;
+            case "poisoned dagger" -> this.type = DamageType.POISON;
+            case "club" -> this.type = DamageType.BLUDGEONING;
+            case "spear" -> this.type = DamageType.PIERCING;
+            case "fists" -> this.type = DamageType.BLUDGEONING;
+            case "torch" -> this.type = DamageType.FIRE;
+            case "taser" -> this.type = DamageType.ELECTRICITY;
+        }
         //define base damage of each weapon type
-        if (this.name == "fists")
+        if (this.name.equals("fists"))
             this.baseDamage = 20;
-        else if (this.name == "sword")
-            this.baseDamage = 80;
-        else if (this.name == "axe")
-            this.baseDamage = 100;
-        else if (this.name.equals("club"))
-            this.baseDamage = 40;
-        else if (this.name == "spear")
-            this.baseDamage = 70;
-        //change name based on non-basic types
-        if (this.type == DamageType.FIRE)
-            this.name += " of fire";
-        else if (this.type == DamageType.ELECTRICITY)
-            this.name += " of electricity";
-        else if (this.type == DamageType.POISON)
-            this.name = "poisoned " + this.name;
+        else
+            this.baseDamage = 0;
     }
 
     public String getName() {
@@ -44,6 +40,19 @@ public class Weapon {
 
     public void levelUp() {
         this.level ++;
+        if (this.level == 1) {
+            switch (this.name) {
+                case "sword" -> this.baseDamage = 80;
+                case "poison dagger" -> this.baseDamage = 100;
+                case "club" -> this.baseDamage = 40;
+                case "spear" -> this.baseDamage = 70;
+                case "torch" -> this.baseDamage = 60;
+                case "taser" -> this.baseDamage = 70;
+            }
+        }
+        else {
+            this.baseDamage *= 1.1;
+        }
     }
 
     //will add player armor class when available
