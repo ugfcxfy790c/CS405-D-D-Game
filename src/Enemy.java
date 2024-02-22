@@ -5,22 +5,21 @@ public class Enemy {
 public static void main(String[] args) {
 
 }   
-
     private String EType;
-    private int difficulty;
+    private double difficulty;
     private double[] res;
-    private int health;
-    private int atk;
-    private int maxDmg;
+    private double health;
+    private double atk;
+    private double maxDmg;
     private int aC;
     
-    public Enemy(String EType, int difficulty, double[] res, int health, int atk, int maxDmg, int aC) {
+    public Enemy(String EType, double difficulty, double[] res, int aC) {
         this.EType = EType;
         this.difficulty = difficulty;
         this.res = res;
-        this.health = health;
-        this.atk = atk;
-        this.maxDmg = maxDmg;
+        this.health = 5 * Math.pow(difficulty, 2);
+        this.atk = atk * (difficulty / 2);
+        this.maxDmg = maxDmg * difficulty;
         this.aC = aC;
     }
 
@@ -33,7 +32,7 @@ public static void main(String[] args) {
         return this.EType;
     }
 
-    public int getDiff() {
+    public double getDiff() {
         return this.difficulty;
     }
     
@@ -60,15 +59,15 @@ public static void main(String[] args) {
         return 1.0;
     }
 
-    public int getHealth() {
+    public double getHealth() {
         return this.health;
     }
 
-    public int getAtk() {
+    public double getAtk() {
         return this.atk;
     }
 
-    public int getMaxDmg() {
+    public double getMaxDmg() {
         return this.maxDmg;
     }
 
@@ -86,7 +85,7 @@ public static void main(String[] args) {
 
     //Makes an attack roll and does damage to the player if neccesary
     public int dmgPlayer(int pAC) {
-        int roll = diceRoller(20) + atk;
+        double roll = diceRoller(20) + atk;
         if (roll >= pAC) {
             return dmgRollPlayer();
         }
@@ -94,6 +93,10 @@ public static void main(String[] args) {
     }
 
     private int dmgRollPlayer() {
-       return diceRoller(this.maxDmg);
+       return diceRoller((int)this.maxDmg);
+    }
+
+    public static Enemy spawnEnemy(Enemy[] eList) {
+        return eList[diceRoller(eList.length) - 1];
     }
 }
