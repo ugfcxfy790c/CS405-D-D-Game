@@ -6,5 +6,6 @@ public enum DamageType {
     //special types
     FIRE,
     ELECTRICITY,
-    POISON
+    POISON,
+    HEALTH
 }
