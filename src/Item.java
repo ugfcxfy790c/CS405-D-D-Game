@@ -41,8 +41,8 @@ public class Item {
             case DamageType.SLASHING -> user.setRes(DamageType.SLASHING, 0.2);
             case DamageType.PIERCING -> user.setRes(DamageType.PIERCING, 0.2);
             case DamageType.HEALTH -> user.damageToPlayer(-20);
-            case DamageType.INVINCIBILITY -> ;
-            case DamageType.POWER -> ;
+            case DamageType.INVINCIBILITY -> user.addAC();
+            case DamageType.POWER -> user.addAtk();
         }
     }
 

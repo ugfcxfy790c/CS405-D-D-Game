@@ -33,8 +33,16 @@ public class Player {
         return this.aC;
     }
 
+    public void addAC() {
+        this.aC++;
+    }
+
     public double getAtk() {
         return this.atk;
+    }
+
+    public void addAtk() {
+        this.atk++;
     }
 
     public double getHealth(){
