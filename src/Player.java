@@ -45,7 +45,6 @@ public class Player {
         return this.inventory;
     }
 
-
     public double getRes(DamageType type) {
         if (type == DamageType.BLUDGEONING) {
             return this.res[0];
@@ -68,9 +67,33 @@ public class Player {
         return 1.0;
     }
 
+    public void setRes(DamageType type, double additor) {
+        if (type == DamageType.BLUDGEONING) {
+            this.res[0] -= additor;
+        }
+        else if (type == DamageType.PIERCING) {
+            this.res[1] -= additor;
+        }
+        else if (type == DamageType.SLASHING) {
+            this.res[2] -= additor;
+        }
+        else if (type == DamageType.FIRE) {
+            this.res[3] -= additor;
+        }
+        else if (type == DamageType.ELECTRICITY) {
+            this.res[4] -= additor;
+        }
+        else if (type == DamageType.POISON) {
+            this.res[5] -= additor;
+        }
+    }
+
+
     public int damageToEnemy(Enemy enemy) {
         double enemyHealth = enemy.getHealth();
         double enemyResistance = enemy.getRes(DamageType.BLUDGEONING);
+
+
         return 0;
     }
 
