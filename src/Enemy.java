@@ -11,9 +11,10 @@ public static void main(String[] args) {
     private double health;
     private double atk;
     private double maxDmg;
+    private DamageType type;
     private int aC;
     
-    public Enemy(String EType, double difficulty, double[] res, int aC) {
+    public Enemy(String EType, double difficulty, double[] res, int aC, DamageType type) {
         this.EType = EType;
         this.difficulty = difficulty;
         this.res = res;
@@ -21,6 +22,7 @@ public static void main(String[] args) {
         this.atk = 3 * (difficulty / 2);
         this.maxDmg = 5 * difficulty;
         this.aC = aC;
+        this.type = type;
     }
 
     public static int diceRoller(int nSides) {
@@ -73,6 +75,10 @@ public static void main(String[] args) {
 
     public int getAC() {
         return this.aC;
+    }
+
+    public DamageType getType() {
+        return this.type;
     }
 
     public boolean eAttack(int roll) {
