@@ -1,3 +1,5 @@
+import java.util.Random;
+
 public class Item {
     //potions: healing, resistance,
     private String name;
@@ -16,7 +18,7 @@ public class Item {
         this.expended = false;
 
         switch (this.type) {
-            case DamageType.BLUDGEONING -> this.name = "potion of bludgeoning resistance";
+            case BLUDGEONING -> this.name = "potion of bludgeoning resistance";
             case DamageType.ELECTRICITY -> this.name = "potion of electricity resistance";
             case DamageType.FIRE -> this.name = "potion of fire resistance";
             case DamageType.POISON -> this.name = "potion of immunity";
@@ -26,6 +28,33 @@ public class Item {
             case DamageType.INVINCIBILITY -> this.name = "spell of invincibility";
             case DamageType.POWER -> this.name = "ring of power";
         }
+    }
+
+    public static Item spawn(Player user) {
+        Random random = new Random();
+        double randnum = random.nextDouble() * 90;
+        DamageType nType;
+        if (randnum < 11) {
+            nType = DamageType.BLUDGEONING;
+        } else if (randnum >= 11 && randnum < 22) {
+            nType = DamageType.SLASHING;
+        } else if (randnum >= 22 && randnum < 33) {
+            nType = DamageType.PIERCING;
+        } else if (randnum >= 33 && randnum < 43) {
+            nType = DamageType.ELECTRICITY;
+        } else if (randnum >= 43 && randnum < 53) {
+            nType = DamageType.FIRE;
+        } else if (randnum >= 53 && randnum < 63) {
+            nType = DamageType.POISON;
+        } else if (randnum >= 63 && randnum < 80) {
+            nType = DamageType.HEALTH;
+        } else if (randnum >= 80 && randnum < 85) {
+            nType = DamageType.INVINCIBILITY;
+        } else if (randnum >= 85 && randnum < 90) {
+            nType = DamageType.POWER;
+        }
+        else nType = DamageType.HEALTH;
+        return new Item(nType, user);
     }
 
     public DamageType getType() {
@@ -46,7 +75,7 @@ public class Item {
             case DamageType.SLASHING -> this.user.setRes(DamageType.SLASHING, 0.2);
             case DamageType.PIERCING -> this.user.setRes(DamageType.PIERCING, 0.2);
             case DamageType.HEALTH -> {
-                this.user.damageToPlayer(-20);
+                this.user.damageToPlayer(-20.0, DamageType.HEALTH);
                 this.uses = 3;
             }
             case DamageType.INVINCIBILITY -> {
