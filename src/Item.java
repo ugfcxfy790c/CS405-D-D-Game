@@ -68,14 +68,16 @@ public class Item {
     public void use() {
         this.active = true;
         switch (this.type) {
-            case DamageType.BLUDGEONING -> this.user.setRes(DamageType.BLUDGEONING, 0.2);
-            case DamageType.ELECTRICITY -> this.user.setRes(DamageType.ELECTRICITY, 0.2);
-            case DamageType.FIRE -> this.user.setRes(DamageType.FIRE, 0.2);
-            case DamageType.POISON -> this.user.setRes(DamageType.POISON, 0.2);
-            case DamageType.SLASHING -> this.user.setRes(DamageType.SLASHING, 0.2);
-            case DamageType.PIERCING -> this.user.setRes(DamageType.PIERCING, 0.2);
-            case DamageType.HEALTH -> {
+
+            case BLUDGEONING -> this.user.setRes(DamageType.BLUDGEONING, 0.2);
+            case ELECTRICITY -> this.user.setRes(DamageType.ELECTRICITY, 0.2);
+            case FIRE -> this.user.setRes(DamageType.FIRE, 0.2);
+            case POISON -> this.user.setRes(DamageType.POISON, 0.2);
+            case SLASHING -> this.user.setRes(DamageType.SLASHING, 0.2);
+            case PIERCING -> this.user.setRes(DamageType.PIERCING, 0.2);
+            case HEALTH -> {
                 this.user.damageToPlayer(-20.0, DamageType.HEALTH);
+
                 this.uses = 3;
             }
             case DamageType.INVINCIBILITY -> {
