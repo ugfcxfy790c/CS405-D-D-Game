@@ -42,8 +42,8 @@ public class Main {
         while(player.getHealth() > 0 && enemy.getHealth() > 0) {
             //Player's turn function, pass in enemy
             if (enemy.getHealth() >= 0) {
-                double damage = enemy.dmgPlayer(player.getAC()) * player.getRes(enemy.getType());
-                player.damageToPlayer(damage);
+                double damage = enemy.dmgPlayer(player.getAC());
+                player.damageToPlayer(damage, enemy.getType());
             }
         }
         if (player.getHealth() <= 0) {

@@ -104,11 +104,6 @@ public class Player {
         }
     }
 
-    public static int diceRoller(int nSides) {
-        Random dice = new Random();
-        return dice.nextInt(nSides) + 1;
-    }
-
     public double damageToEnemy(Enemy enemy, int index) {
         return weapons[index].doDamage(enemy, this) + this.atk;
     }
