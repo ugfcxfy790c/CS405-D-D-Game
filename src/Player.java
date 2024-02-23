@@ -20,6 +20,8 @@ public class Player {
         this.inventory = new Item[9];
     }
 
+
+
     public static int diceRoller(int nSides) {
         Random dice = new Random();
         return dice.nextInt(nSides) + 1;
@@ -49,10 +51,6 @@ public class Player {
         return this.inventory;
     }
     
-    public Weapon getCurrentWeapon(){
-        if (this.)
-        return this.weapons[2];
-    }
 
     public void updateInventory() {
         for (int i = 0; i < 9; i ++) {
@@ -106,15 +104,17 @@ public class Player {
         }
     }
 
-
-    public int damageToEnemy(Enemy enemy) {
-        double enemyResistance = enemy.getRes(DamageType.BLUDGEONING);
-
-        return 0;
+    public static int diceRoller(int nSides) {
+        Random dice = new Random();
+        return dice.nextInt(nSides) + 1;
     }
 
-    public void damageToPlayer(double damage) {
-        this.health -= damage;
+    public double damageToEnemy(Enemy enemy, int index) {
+        return weapons[index].doDamage(enemy, this) + this.atk;
+    }
+
+    public void damageToPlayer(double damage, DamageType type) {
+        this.health -= (damage*getRes(type));
     }
 
 }
