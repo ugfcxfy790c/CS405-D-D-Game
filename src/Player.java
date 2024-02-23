@@ -26,7 +26,7 @@ public class Player {
     }
 
     public Player getPlayer(){
-        return this;
+        return this.player;
     }
 
     public int getAC() {
