@@ -40,6 +40,13 @@ public class Main {
                 player.damageToPlayer(damage);
             }
         }
+        if (player.getHealth() <= 0) {
+            System.out.println("You are dead...");
+            System.exit(0);
+        }
+        if (enemy.getHealth() <= 0) {
+            System.out.println("The " + enemy.getEType() + " has been slain!");
+        }
 
     }
 }
