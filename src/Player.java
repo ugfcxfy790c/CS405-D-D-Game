@@ -11,7 +11,6 @@ public class Player {
     private double atk;
     private double[] res;
 
-    Player player = new Player(100, 15, 5);
 
     public Player(double health, int aC, int atk) {
         this.health = health;
