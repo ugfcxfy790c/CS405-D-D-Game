@@ -11,7 +11,6 @@ public class Player {
     private double atk;
     private double[] res;
 
-    Player player = new Player(100, 15, 5);
 
     public Player(double health, int aC, int atk) {
         this.health = health;
@@ -26,16 +25,20 @@ public class Player {
         return dice.nextInt(nSides) + 1;
     }
 
-    public Player getPlayer(){
-        return this.player;
-    }
-
     public int getAC() {
         return this.aC;
     }
 
+    public void addAC() {
+        this.aC++;
+    }
+
     public double getAtk() {
         return this.atk;
+    }
+
+    public void addAtk() {
+        this.atk++;
     }
 
     public double getHealth(){
@@ -44,6 +47,15 @@ public class Player {
 
     public Item[] getItems(){
         return this.inventory;
+    }
+
+    public void updateInventory() {
+        for (int i = 0; i < 9; i ++) {
+            if (this.inventory[i] != null) {
+                this.inventory[i].update();
+                if (this.inventory[i].isExpended()) this.inventory[i] = null;
+            }
+        }
     }
 
     public double getRes(DamageType type) {
