@@ -48,6 +48,11 @@ public class Player {
     public Item[] getItems(){
         return this.inventory;
     }
+    
+    public Weapon getCurrentWeapon(){
+        if (this.)
+        return this.weapons[2];
+    }
 
     public void updateInventory() {
         for (int i = 0; i < 9; i ++) {
@@ -103,9 +108,7 @@ public class Player {
 
 
     public int damageToEnemy(Enemy enemy) {
-        double enemyHealth = enemy.getHealth();
         double enemyResistance = enemy.getRes(DamageType.BLUDGEONING);
-
 
         return 0;
     }
