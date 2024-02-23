@@ -18,8 +18,8 @@ public static void main(String[] args) {
         this.difficulty = difficulty;
         this.res = res;
         this.health = 5 * Math.pow(difficulty, 2);
-        this.atk = atk * (difficulty / 2);
-        this.maxDmg = maxDmg * difficulty;
+        this.atk = 3 * (difficulty / 2);
+        this.maxDmg = 5 * difficulty;
         this.aC = aC;
     }
 

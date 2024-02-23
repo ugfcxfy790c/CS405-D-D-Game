@@ -24,9 +24,13 @@ public class Room {
     public static void fight(Enemy[] eList, Player player) {
         Enemy enemy = Enemy.spawnEnemy(eList);
         System.out.println("A " + enemy.getEType() + " emerges from the shadows!");
-        while(player.getHealth() > 0 && enemy.getHealth() > 0)
+        while(player.getHealth() > 0 && enemy.getHealth() > 0) {
             //Player's turn function, pass in enemy
-            
-        double damage = enemy.dmgPlayer(player.getAC());
+            if (enemy.getHealth() <= 0) {
+                double damage = enemy.dmgPlayer(player.getAC());
+                player.damageToPlayer(damage);
+            }
+        }
+
     }
 }
