@@ -38,8 +38,26 @@ public class Main {
 
     public static void fight(Enemy[] eList, Player player) {
         Enemy enemy = Enemy.spawnEnemy(eList);
-        System.out.println("A " + enemy.getEType() + " emerges from the shadows!");
+        int entry = Enemy.diceRoller(5);
+        String entMessage;
+        if (entry == 1) {
+            entMessage = " emerges from the shadows!";
+        }
+        else if (entry == 2) {
+            entMessage = " enters the room and screams!";
+        }
+        else if (entry == 3) {
+            entMessage = " is released from storage into the room!";
+        }
+        else if (entry == 4) {
+            entMessage = " drops down from the ceiling!";
+        }
+        else {
+            entMessage = " pops into existence!";
+        }
+        System.out.println("A " + enemy.getEType() + entMessage);
         while(player.getHealth() > 0 && enemy.getHealth() > 0) {
+            System.out.println("What Weapon Would You Like To Use?");
             //Player's turn function, pass in enemy
             if (enemy.getHealth() >= 0) {
                 double damage = enemy.dmgPlayer(player.getAC());
