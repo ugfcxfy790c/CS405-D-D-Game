@@ -18,7 +18,7 @@ public class Player {
         this.atk = atk;
         this.res = new double [] {1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0};
         this.inventory = new Item[9];
-        this.weapons = new Weapon[7];
+        this.weapons = new Weapon[8];
         this.weapons[0] = new Weapon("fists");
     }
 
