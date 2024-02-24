@@ -58,6 +58,9 @@ public static void main(String[] args) {
         else if (type == DamageType.POISON) {
             return this.res[5];
         }
+        else if (type == DamageType.PHSYCIC) {
+            return this.res[6];
+        }
         return 1.0;
     }
 
