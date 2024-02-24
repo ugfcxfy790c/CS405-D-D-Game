@@ -59,14 +59,16 @@ public class Main {
         }
         System.out.println("A " + enemy.getEType() + entMessage);
         while(player.getHealth() > 0 && enemy.getHealth() > 0) {
-            System.out.println("Do you want to use a weapon or an item? (WEAPON/ITEM)");
-            String choice = input.nextLine();
-            if (choice.toUpperCase() == "ITEM") {
+            System.out.println("Do you want to usse a weapon or an item? (WEAPON/ITEM)");
+            String choice = input.nextLine().toUpperCase();
+            if (choice.equals("ITEM")) {
                 System.out.println(player.showInventory());
+                System.out.println("hey");
             }
-            else if (choice.toUpperCase() == "WEAPON") {
+            else if (choice.equals("WEAPON")) {
                 System.out.println(player.weaponString());
             }
+            System.out.println(player.getHealth());
             //Player's turn function, pass in enemy
             if (enemy.getHealth() >= 0) {
                 double damage = enemy.dmgPlayer(player.getAC());
