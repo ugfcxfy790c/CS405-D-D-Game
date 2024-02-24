@@ -61,10 +61,10 @@ public class Main {
         while(player.getHealth() > 0 && enemy.getHealth() > 0) {
             System.out.println("Do you want to use a weapon or an item? (WEAPON/ITEM)");
             String choice = input.nextLine();
-            if (choice == "ITEM") {
+            if (choice.toUpperCase() == "ITEM") {
                 System.out.println(player.showInventory());
             }
-            else if (choice == "WEAPON") {
+            else if (choice.toUpperCase() == "WEAPON") {
                 System.out.println(player.weaponString());
             }
             //Player's turn function, pass in enemy
