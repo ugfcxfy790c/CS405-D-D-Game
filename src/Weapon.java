@@ -24,6 +24,7 @@ public class Weapon {
         //define base damage of each weapon type
         if (this.name.equals("fists"))
             this.baseDamage = 20;
+            this.level = 1;
         else
             this.baseDamage = 0;
     }

@@ -22,6 +22,13 @@ public class Player {
         this.inventory = new Item[9];
         this.weapons = new Weapon[8];
         this.weapons[0] = new Weapon("fists");
+        this.weapons[1] = new Weapon("sword");
+        this.weapons[2] = new Weapon("poison dagger");
+        this.weapons[3] = new Weapon("club");
+        this.weapons[4] = new Weapon("spear");
+        this.weapons[5] = new Weapon("torch");
+        this.weapons[6] = new Weapon("taser");
+        this.weapons[7] = new Weapon("tuning fork");
     }
 
 
@@ -120,7 +127,7 @@ public class Player {
     public String weaponString() {
         String print = "";
         for (int i = 0; i < this.weapons.length; i ++) {
-            if (this.weapons[i] != null) {
+            if (this.weapons[i] != null && this.weapons[i].getLevel() > 0) {
                 print += i + ":  " + this.weapons[i].getName() + "  ";
             }
         }
