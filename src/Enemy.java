@@ -85,7 +85,7 @@ public static void main(String[] args) {
         return (roll >= this.aC);
     }
 
-    public void eDamage(int damage) {
+    public void eDamage(double damage) {
         this.health -= damage;
     }
 
