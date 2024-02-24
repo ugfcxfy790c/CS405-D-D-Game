@@ -11,6 +11,8 @@ public class Player {
     private double atk;
     private double[] res;
 
+    private int itemCount;
+
 
     public Player(double health, int aC, int atk) {
         this.health = health;
@@ -33,6 +35,8 @@ public class Player {
         return this.aC;
     }
 
+    public int getItemCount() {return this.itemCount;}
+
     public void addAC() {
         this.aC++;
     }
@@ -48,11 +52,6 @@ public class Player {
     public double getHealth(){
         return this.health;
     }
-
-    public Item[] getItems(){
-        return this.inventory;
-    }
-    
 
     public void updateInventory() {
         for (int i = 0; i < 9; i ++) {
@@ -132,18 +131,33 @@ public class Player {
         return this.weapons[index];
     }
 
+    public Item getItem(int index) { return this.inventory[index]; }
+
     public String showInventory() {
         String print = "";
+        this.itemCount = 0;
         for (int i = 0; i < this.inventory.length; i ++) {
-            if (this.inventory[i] != null) {
+            if (this.inventory[i] != null && !this.inventory[i].isActive()) {
                 print += i + ":  " + this.inventory[i].getName() + "  ";
+                this.itemCount ++;
             }
         }
         return print;
     }
 
-    public void damageToPlayer(double damage, DamageType type) {
-        this.health -= (damage*getRes(type));
+    public void addToInventory(Item item) {
+        for (int i = 0; i < this.inventory.length; i++) {
+            if (this.inventory[i] == null) {
+                this.inventory[i] = item;
+                break;
+            }
+        }
+    }
+
+    public double damageToPlayer(double damage, DamageType type) {
+        double dmg = (damage*getRes(type));
+        this.health -= dmg;
+        return dmg;
     }
 
 }
