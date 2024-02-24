@@ -18,6 +18,7 @@ public class Main {
         player.updateInventory();
         Item ite = Item.spawn(player);
         player.addToInventory(ite);
+        System.out.println("You found a " + ite.getName() + " on the ground!");
         rewards(player);
 
 

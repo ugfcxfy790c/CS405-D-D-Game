@@ -22,11 +22,13 @@ public class Weapon {
             case "tuning fork" -> this.type = DamageType.PSYCHIC;
         }
         //define base damage of each weapon type
-        if (this.name.equals("fists"))
+        if (this.name.equals("fists")) {
             this.baseDamage = 20;
             this.level = 1;
-        else
+        }
+        else {
             this.baseDamage = 0;
+        }
     }
 
     public String getName() {
