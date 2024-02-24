@@ -69,6 +69,7 @@ public class Main {
             else if (choice.equals("WEAPON")) {
                 System.out.println(player.weaponString());
                 int weaponSelect = input.nextInt();
+                input.nextLine();
                 double dmg = player.damageToEnemy(enemy, weaponSelect);
                 System.out.println("You attack the " + enemy.getEType() + " with your " + player.getWeapon(weaponSelect).getName() + ", doing " + dmg + " damage.");
             }
