@@ -24,6 +24,7 @@ public class Item {
             case POISON -> this.name = "potion of immunity";
             case SLASHING -> this.name = "chain mail armor";
             case PIERCING -> this.name = "shield";
+            case PSYCHIC -> this.name = "ring of mind shielding";
             case HEALTH -> this.name = "potion of healing";
             case INVINCIBILITY -> this.name = "spell of invincibility";
             case POWER -> this.name = "ring of power";
@@ -42,10 +43,12 @@ public class Item {
             nType = DamageType.PIERCING;
         } else if (randnum >= 33 && randnum < 43) {
             nType = DamageType.ELECTRICITY;
-        } else if (randnum >= 43 && randnum < 53) {
+        } else if (randnum >= 43 && randnum < 50) {
             nType = DamageType.FIRE;
-        } else if (randnum >= 53 && randnum < 63) {
+        } else if (randnum >= 50 && randnum < 57) {
             nType = DamageType.POISON;
+        } else if (randnum >= 57 && randnum < 63) {
+            nType = DamageType.PSYCHIC;
         } else if (randnum >= 63 && randnum < 80) {
             nType = DamageType.HEALTH;
         } else if (randnum >= 80 && randnum < 85) {
@@ -75,6 +78,7 @@ public class Item {
             case POISON -> this.user.setRes(DamageType.POISON, 0.2);
             case SLASHING -> this.user.setRes(DamageType.SLASHING, 0.2);
             case PIERCING -> this.user.setRes(DamageType.PIERCING, 0.2);
+            case PSYCHIC -> this.user.setRes(DamageType.PSYCHIC, 0.2);
             case HEALTH -> {
                 this.user.damageToPlayer(-20.0, DamageType.HEALTH);
 
@@ -101,6 +105,7 @@ public class Item {
                 case POISON -> user.setRes(DamageType.POISON, -0.2);
                 case SLASHING -> user.setRes(DamageType.SLASHING, -0.2);
                 case PIERCING -> user.setRes(DamageType.PIERCING, -0.2);
+                case PSYCHIC -> user.setRes(DamageType.PSYCHIC, -0.2);
             }
             this.expended = true;
         }

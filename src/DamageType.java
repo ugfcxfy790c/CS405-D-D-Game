@@ -7,7 +7,7 @@ public enum DamageType {
     FIRE,
     ELECTRICITY,
     POISON,
-    PHSYCIC,
+    PSYCHIC,
     //nondamage types
     HEALTH,
     INVINCIBILITY,

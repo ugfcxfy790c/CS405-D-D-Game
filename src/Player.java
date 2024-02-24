@@ -82,6 +82,9 @@ public class Player {
         else if (type == DamageType.POISON) {
             return this.res[5];
         }
+        else if (type == DamageType.PSYCHIC) {
+            return this.res[6];
+        }
         return 1.0;
     }
 
@@ -103,6 +106,9 @@ public class Player {
         }
         else if (type == DamageType.POISON) {
             this.res[5] -= additor;
+        }
+        else if (type == DamageType.PSYCHIC) {
+            this.res[6] -= additor;
         }
     }
 

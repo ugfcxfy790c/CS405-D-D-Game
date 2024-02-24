@@ -75,7 +75,7 @@ public class Main {
                 input.nextLine();
                 double dmg = player.damageToEnemy(enemy, weaponSelect);
                 System.out.println("You attack the " + enemy.getEType() + " with your " + player.getWeapon(weaponSelect).getName() + ", doing " + dmg + " damage.");
-                if (enemy.getEType() == "Mr. Cosgrove" && player.getWeapon(weaponSelect).getType() == DamageType.PHSYCIC) {
+                if (enemy.getEType() == "Mr. Cosgrove" && player.getWeapon(weaponSelect).getType() == DamageType.PSYCHIC) {
                     System.out.println("The mental pain only seems to heal him!");
                 }
             }
