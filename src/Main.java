@@ -13,7 +13,7 @@ public class Main {
     }
 
     public static void newRoom(int roomNumber, Player player) {
-        System.out.println("Room " + roomNumber);
+        System.out.println("\nRoom " + roomNumber);
         fight(enemyList(Math.sqrt(roomNumber)), player);
     }
 
@@ -67,8 +67,11 @@ public class Main {
             }
             else if (choice.equals("WEAPON")) {
                 System.out.println(player.weaponString());
+                int weaponSelect = input.nextInt();
+                double dmg = player.damageToEnemy(enemy, weaponSelect);
+                System.out.println("You attack the " + enemy.getEType() + " with your " + player.getWeapon(weaponSelect).getName() + ", doing " + dmg + " damage.");
             }
-            System.out.println(player.getHealth());
+            System.out.println("Health:" + player.getHealth());
             //Player's turn function, pass in enemy
             if (enemy.getHealth() >= 0) {
                 double damage = enemy.dmgPlayer(player.getAC());

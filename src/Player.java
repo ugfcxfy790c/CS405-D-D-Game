@@ -107,7 +107,9 @@ public class Player {
     }
 
     public double damageToEnemy(Enemy enemy, int index) {
-        return weapons[index].doDamage(enemy, this) + this.atk;
+        double damage = weapons[index].doDamage(enemy, this) + this.atk;
+        enemy.eDamage(damage);
+        return damage;
     }
 
     public String weaponString() {
@@ -118,6 +120,10 @@ public class Player {
             }
         }
         return print;
+    }
+
+    public Weapon getWeapon(int index) {
+        return this.weapons[index];
     }
 
     public String showInventory() {
