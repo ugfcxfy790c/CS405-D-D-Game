@@ -18,7 +18,7 @@ public class Player {
         this.health = health;
         this.aC = aC;
         this.atk = atk;
-        this.res = new double [] {1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0};
+        this.res = new double [] {1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0};
         this.inventory = new Item[9];
         this.weapons = new Weapon[7];
         this.weapons[0] = new Weapon("fists");
@@ -81,6 +81,9 @@ public class Player {
         else if (type == DamageType.POISON) {
             return this.res[5];
         }
+        else if (type == DamageType.PSYCHIC) {
+            return this.res[6];
+        }
         return 1.0;
     }
 
@@ -102,6 +105,9 @@ public class Player {
         }
         else if (type == DamageType.POISON) {
             this.res[5] -= additor;
+        }
+        else if (type == DamageType.PSYCHIC) {
+            this.res[6] -= additor;
         }
     }
 

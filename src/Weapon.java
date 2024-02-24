@@ -19,6 +19,7 @@ public class Weapon {
             case "fists" -> this.type = DamageType.BLUDGEONING;
             case "torch" -> this.type = DamageType.FIRE;
             case "taser" -> this.type = DamageType.ELECTRICITY;
+            case "tuning fork" -> this.type = DamageType.PSYCHIC;
         }
         //define base damage of each weapon type
         if (this.name.equals("fists"))
@@ -48,6 +49,7 @@ public class Weapon {
                 case "spear" -> this.baseDamage = 70;
                 case "torch" -> this.baseDamage = 60;
                 case "taser" -> this.baseDamage = 70;
+                case "tuning fork" -> this.baseDamage = 50;
             }
         }
         else {
