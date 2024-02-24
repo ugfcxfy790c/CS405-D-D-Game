@@ -107,7 +107,7 @@ public class Player {
     }
 
     public double damageToEnemy(Enemy enemy, int index) {
-        double damage = weapons[index].doDamage(enemy, this) + this.atk;
+        double damage = weapons[index].doDamage(enemy, this);
         enemy.eDamage(damage);
         return damage;
     }
