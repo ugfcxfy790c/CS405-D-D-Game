@@ -14,7 +14,10 @@ public class Main {
 
     public static void newRoom(int roomNumber, Player player) {
         System.out.println("\nRoom " + roomNumber);
+        player.updateInventory();
         fight(enemyList(Math.sqrt(roomNumber)), player);
+        Item item = Item.spawn(player);
+        player.addToInventory(item);
     }
 
     public static Enemy[] enemyList(double difficulty) {
@@ -65,6 +68,11 @@ public class Main {
             choice = input.nextLine().toUpperCase();
             if (choice.equals("ITEM")) {
                 System.out.println(player.showInventory());
+                int itemSelect = input.nextInt();
+                input.nextLine();
+                Item item = player.getItem(itemSelect);
+                item.use();
+                System.out.println("You use your " + item.getName() + ".");
             }
             else if (choice.equals("WEAPON")) {
                 System.out.println(player.weaponString());

@@ -49,11 +49,6 @@ public class Player {
         return this.health;
     }
 
-    public Item[] getItems(){
-        return this.inventory;
-    }
-    
-
     public void updateInventory() {
         for (int i = 0; i < 9; i ++) {
             if (this.inventory[i] != null) {
@@ -126,14 +121,25 @@ public class Player {
         return this.weapons[index];
     }
 
+    public Item getItem(int index) { return this.inventory[index]; }
+
     public String showInventory() {
         String print = "";
         for (int i = 0; i < this.inventory.length; i ++) {
-            if (this.inventory[i] != null) {
+            if (this.inventory[i] != null && !this.inventory[i].isActive()) {
                 print += i + ":  " + this.inventory[i].getName() + "  ";
             }
         }
         return print;
+    }
+
+    public void addToInventory(Item item) {
+        for (int i = 0; i < this.inventory.length; i++) {
+            if (this.inventory[i] == null) {
+                this.inventory[i] = item;
+                break;
+            }
+        }
     }
 
     public double damageToPlayer(double damage, DamageType type) {

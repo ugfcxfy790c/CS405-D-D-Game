@@ -65,7 +65,14 @@ public class Item {
         return this.expended;
     }
 
+    public boolean isActive() {
+        return this.active;
+    }
+
     public void use() {
+        if (this.active) {
+            return;
+        }
         this.active = true;
         switch (this.type) {
 
