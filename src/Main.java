@@ -15,6 +15,7 @@ public class Main {
     public static void newRoom(int roomNumber, Player player) {
         System.out.println("\nRoom " + roomNumber);
         fight(enemyList(Math.sqrt(roomNumber)), player, roomNumber);
+        player.updateInventory();
         rewards(player);
 
     }
@@ -66,26 +67,42 @@ public class Main {
         }
         while(player.getHealth() > 0 && enemy.getHealth() > 0) {
             System.out.println("Your turn:");
-            System.out.println("Do you want to use a weapon or an item? (WEAPON/ITEM)");
-            String choice;
-            choice = input.nextLine().toUpperCase();
-            if (choice.equals("ITEM")) {
-                System.out.println(player.showInventory());
-            }
-            else if (choice.equals("WEAPON")) {
-                System.out.println("Choose your weapon:");
-                System.out.println(player.weaponString());
-                int weaponSelect = input.nextInt();
-                input.nextLine();
-                double dmg = player.damageToEnemy(enemy, weaponSelect);
-                System.out.println("You attack the " + enemy.getEType() + " with your " + player.getWeapon(weaponSelect).getName() + ", doing " + dmg + " damage.");
-                if (enemy.getEType() == "Mr. Cosgrove" && player.getWeapon(weaponSelect).getType() == DamageType.PSYCHIC) {
-                    System.out.println("The mental pain only seems to heal him!");
+            boolean running = true;
+            while (running) {
+                System.out.println("Do you want to use a weapon or an item? (WEAPON/ITEM)");
+                String choice;
+                choice = input.nextLine().toUpperCase();
+                if (choice.equals("ITEM")) {
+                    System.out.println(player.showInventory());
+                    if (player.getItemCount() == 0) {
+                        System.out.println("You have no items.");
+                    }
+                    else {
+                        int itemSelect = input.nextInt();
+                        input.nextLine();
+                        Item item = player.getItem(itemSelect);
+                        item.use();
+                        System.out.println("You use your " + item.getName() + ".");
+                        running = false;
+                    }
+                } else if (choice.equals("WEAPON")) {
+                    System.out.println("Choose your weapon:");
+                    System.out.println(player.weaponString());
+                    int weaponSelect = input.nextInt();
+                    input.nextLine();
+                    double dmg = player.damageToEnemy(enemy, weaponSelect);
+                    System.out.println("You attack the " + enemy.getEType() + " with your " + player.getWeapon(weaponSelect).getName() + ", doing " + dmg + " damage.");
+                    if (enemy.getEType() == "Mr. Cosgrove" && player.getWeapon(weaponSelect).getType() == DamageType.PSYCHIC) {
+                      System.out.println("The mental pain only seems to heal him!");
+                    }
+                    running = false;
                 }
             }
+
             if (enemy.getHealth() >= 0) {
-                double damage = enemy.dmgPlayer(player.getAC());
-                player.damageToPlayer(damage, enemy.getType());
+                if (enemy.getHealth() >= 0) {
+                double damage = player.damageToPlayer(enemy.dmgPlayer(player.getAC()), enemy.getType());
+                System.out.println("The " + enemy.getEType() + " attacks, doing " + damage + " damage.");
                 System.out.println("You have " + player.getHealth() + " health left");
             }
         }
