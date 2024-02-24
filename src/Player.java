@@ -11,6 +11,8 @@ public class Player {
     private double atk;
     private double[] res;
 
+    private int itemCount;
+
 
     public Player(double health, int aC, int atk) {
         this.health = health;
@@ -32,6 +34,8 @@ public class Player {
     public int getAC() {
         return this.aC;
     }
+
+    public int getItemCount() {return this.itemCount;}
 
     public void addAC() {
         this.aC++;
@@ -125,9 +129,11 @@ public class Player {
 
     public String showInventory() {
         String print = "";
+        this.itemCount = 0;
         for (int i = 0; i < this.inventory.length; i ++) {
             if (this.inventory[i] != null && !this.inventory[i].isActive()) {
                 print += i + ":  " + this.inventory[i].getName() + "  ";
+                this.itemCount ++;
             }
         }
         return print;
