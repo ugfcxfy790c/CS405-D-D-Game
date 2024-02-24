@@ -59,15 +59,17 @@ public class Main {
         }
         System.out.println("A " + enemy.getEType() + entMessage);
         while(player.getHealth() > 0 && enemy.getHealth() > 0) {
-            System.out.println("Do you want to usse a weapon or an item? (WEAPON/ITEM)");
-            String choice = input.nextLine().toUpperCase();
+            System.out.println("Your turn:");
+            System.out.println("Do you want to use a weapon or an item? (WEAPON/ITEM)");
+            String choice;
+            choice = input.nextLine().toUpperCase();
             if (choice.equals("ITEM")) {
                 System.out.println(player.showInventory());
-                System.out.println("hey");
             }
             else if (choice.equals("WEAPON")) {
                 System.out.println(player.weaponString());
                 int weaponSelect = input.nextInt();
+                input.nextLine();
                 double dmg = player.damageToEnemy(enemy, weaponSelect);
                 System.out.println("You attack the " + enemy.getEType() + " with your " + player.getWeapon(weaponSelect).getName() + ", doing " + dmg + " damage.");
             }
