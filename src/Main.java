@@ -71,11 +71,11 @@ public class Main {
                 double dmg = player.damageToEnemy(enemy, weaponSelect);
                 System.out.println("You attack the " + enemy.getEType() + " with your " + player.getWeapon(weaponSelect).getName() + ", doing " + dmg + " damage.");
             }
-            System.out.println("Health:" + player.getHealth());
+            System.out.println("Health: " + player.getHealth());
             //Player's turn function, pass in enemy
             if (enemy.getHealth() >= 0) {
-                double damage = enemy.dmgPlayer(player.getAC());
-                player.damageToPlayer(damage, enemy.getType());
+                double damage = player.damageToPlayer(enemy.dmgPlayer(player.getAC()), enemy.getType());
+                System.out.println("The " + enemy.getEType() + " attacks, doing " + damage + " damage.");
             }
         }
         if (player.getHealth() <= 0) {

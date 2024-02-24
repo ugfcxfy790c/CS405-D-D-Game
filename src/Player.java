@@ -136,8 +136,10 @@ public class Player {
         return print;
     }
 
-    public void damageToPlayer(double damage, DamageType type) {
-        this.health -= (damage*getRes(type));
+    public double damageToPlayer(double damage, DamageType type) {
+        double dmg = (damage*getRes(type));
+        this.health -= dmg;
+        return dmg;
     }
 
 }
