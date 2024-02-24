@@ -57,8 +57,8 @@ public class Item {
         return new Item(nType, user);
     }
 
-    public DamageType getType() {
-        return this.type;
+    public String getName() {
+        return this.name;
     }
 
     public boolean isExpended() {

@@ -18,6 +18,8 @@ public class Player {
         this.atk = atk;
         this.res = new double [] {1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0};
         this.inventory = new Item[9];
+        this.weapons = new Weapon[7];
+        this.weapons[0] = new Weapon("fists");
     }
 
 
@@ -106,6 +108,26 @@ public class Player {
 
     public double damageToEnemy(Enemy enemy, int index) {
         return weapons[index].doDamage(enemy, this) + this.atk;
+    }
+
+    public String weaponString() {
+        String print = "";
+        for (int i = 0; i < this.weapons.length; i ++) {
+            if (this.weapons[i] != null) {
+                print += i + ":  " + this.weapons[i].getName() + "  ";
+            }
+        }
+        return print;
+    }
+
+    public String showInventory() {
+        String print = "";
+        for (int i = 0; i < this.inventory.length; i ++) {
+            if (this.inventory[i] != null) {
+                print += i + ":  " + this.inventory[i].getName() + "  ";
+            }
+        }
+        return print;
     }
 
     public void damageToPlayer(double damage, DamageType type) {
