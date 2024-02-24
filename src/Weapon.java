@@ -24,9 +24,10 @@ public class Weapon {
         //define base damage of each weapon type
         if (this.name.equals("fists"))
             this.baseDamage = 20;
-            this.level = 1;
-        else
+        this.level = 1;
+        else{
             this.baseDamage = 0;
+        }
     }
 
     public String getName() {
@@ -63,7 +64,7 @@ public class Weapon {
     public double doDamage(Enemy monster, Player user) {
         double roll = Enemy.diceRoller(20) + user.getAtk();
         if (roll >= monster.getAC()) {
-            return (this.baseDamage / 20.0) * (Enemy.diceRoller(20) + user.getAtk()) * monster.getRes(this.type);
+            return ((this.baseDamage / 20.0) * (Enemy.diceRoller(20) + user.getAtk())) * monster.getRes(this.type);
         }
         return 0;
     }
