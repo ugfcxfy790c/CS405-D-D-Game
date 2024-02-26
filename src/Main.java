@@ -48,15 +48,18 @@ public class Main {
         Enemy e16 = new Enemy("Baby Tarasque", difficulty, new double[] {0.5, 0.5, 0.5, 0.1, 5, 0.1, 1}, 15, DamageType.SLASHING);
 
 
-        return new Enemy[]{e1, e2, e3, e4, e5, e6, e7, e8, e9, e10, e11, e12, e13, e14, e15, e16};
-        //return new Enemy[] {e7};
+        //return new Enemy[]{e1, e2, e3, e4, e5, e6, e7, e8, e9, e10, e11, e12, e13, e14, e15, e16};
+        return new Enemy[] {e14};
     }
 
     public static void fight(Enemy[] eList, Player player, int roomNumber) {
         Enemy enemy = Enemy.spawnEnemy(eList);
         int entry = Enemy.diceRoller(5);
         String entMessage;
-        if (entry == 1) {
+        if (enemy.getEType() == "Mr. Cosgrove") {
+            entMessage = " walks slowly into the wroom while cackling maniacally!";
+        }
+        else if (entry == 1) {
             entMessage = " emerges from the shadows!";
         } else if (entry == 2) {
             entMessage = " enters the room and screams!";
@@ -68,6 +71,19 @@ public class Main {
             entMessage = " pops into existence!";
         }
         System.out.println("A " + enemy.getEType() + entMessage);
+
+        if (enemy.getEType() == "Sphinx") {
+            System.out.println("Answer me this, and you will be greatly rewarded. Answer wrong, and die painfully! Answer nothing, and I will not be as angry while fighting you.");
+            System.out.println("Will you attempt to answer the Sphinx's riddle? (0 if No, 1 if Yes)");
+            int riddler = input.nextInt();
+            input.nextLine();
+            if (riddler == 0) {
+                System.out.println("Very well. To battle!");
+            }
+            else {
+                riddle(enemy, player);
+            }
+        }
 
         if (roomNumber == 1 && enemy.getRes(DamageType.BLUDGEONING) == 0) {
             System.out.println("The gods, noticing that the " + enemy.getEType() + " is immune to your only source of damage, take pity on you.");
@@ -211,6 +227,9 @@ public class Main {
         }
         else {
             if (!condition) {
+                System.out.println("In the next room, you find a wacky potion on the floor. You drink it without hesitation...");
+                player.setRes(DamageType.BLUDGEONING, (Enemy.diceRoller(100) - 50) / 100.0);
+     
                 player.setRes(DamageType.PIERCING, (Enemy.diceRoller(100) - 50) / 100.0);
                 player.setRes(DamageType.SLASHING, (Enemy.diceRoller(100) - 50) / 100.0);
                 player.setRes(DamageType.FIRE, (Enemy.diceRoller(100) - 50) / 100.0);
@@ -218,10 +237,45 @@ public class Main {
                 player.setRes(DamageType.POISON, (Enemy.diceRoller(100) - 50) / 100.0);
                 player.setRes(DamageType.PSYCHIC, (Enemy.diceRoller(100) - 50) / 100.0);
             }
-            System.out.println("In the next room, you find a wacky potion on the floor. You drink it without hesitation...");
-            player.setRes(DamageType.BLUDGEONING, (Enemy.diceRoller(100) - 50) / 100.0);
         }
 
+    }
+
+    public static Enemy riddle(Enemy sphinx, Player player) {
+        int riddle = Enemy.diceRoller(5);
+        String answer;
+        if (riddle == 1) {
+            System.out.println("I am 3/7 chicken, 2/3 cat, and 2/4 goat. What am I?");
+            answer = "CHICAGO";
+        }
+        else if (riddle == 2) {
+            System.out.println("The more you take, the more you leave behind. What am I?");
+            answer = "FOOTSTEPS";
+        }
+        else if (riddle == 3) {
+            System.out.println("I always stand before you, but can never be seen. What am I?");
+            answer = "FUTURE";
+        }
+        else if (riddle == 4) {
+            System.out.println("I am a tree you can hold in your hand. What am I?");
+            answer = "PALM";
+        }
+        else {
+            System.out.println("Who makes me has no need of me. Who buys me has no use for me. Who uses me never sees nor feels me. What am I?");
+            answer = "COFFIN";
+        }
+        System.out.println("Respond, or Die! (Responce should be one word)");
+        if (input.nextLine().toUpperCase().equals(answer)) {
+            System.out.println("Very Clever! You may take your reward and go.");
+            System.out.println("Your armor has been strengthened!");
+            player.addAC(2);
+            sphinx.eDamage(sphinx.getHealth());
+        }
+        else {
+            System.out.println("Fool!");
+            sphinx = Enemy.enrage(sphinx);
+        }
+        return sphinx;
     }
 
 }

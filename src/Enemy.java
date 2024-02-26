@@ -118,4 +118,11 @@ public static void main(String[] args) {
     public static Enemy spawnEnemy(Enemy[] eList) {
         return eList[diceRoller(eList.length) - 1];
     }
+
+    public static Enemy enrage(Enemy enemy) {
+        enemy.health *= 10;
+        enemy.atk += 4;
+        enemy.aC += 3;
+        return enemy;
+    }
 }
