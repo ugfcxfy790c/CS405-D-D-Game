@@ -62,6 +62,7 @@ public class Main {
     }
 
     public static void fight(Enemy[] eList, Player player, int roomNumber) {
+        boolean enrage = false;
         Enemy enemy = Enemy.spawnEnemy(eList);
         int entry = Enemy.diceRoller(5);
         String entMessage;
@@ -110,7 +111,7 @@ public class Main {
             System.out.println("Your turn:");
             boolean running = true;
             while (running) {
-                System.out.println("Do you want to use a weapon, item, or spell? (WEAPON/ITEM/SPELL)");
+                System.out.println("Do you want to use a weapon, item, or spell? (WEAPON/ITEM/SPELL/ENRAGE)");
                 String choice;
                 choice = input.nextLine().toUpperCase();
 
@@ -153,6 +154,14 @@ public class Main {
                         }
                         else System.out.println("You have no available spells right now.");
                     }
+                    case "ENRAGE" -> {
+                        if (enrage == true) {
+                            System.out.println("You won't get any extra rewards for doing this, but if you want to...");
+                        }
+                        System.out.println("The enemy is furious!!!");
+                        enrage = true;
+                        enemy = Enemy.enrage(enemy);
+                    }
                 }
             }
 
@@ -169,6 +178,10 @@ public class Main {
             }
             if (enemy.getHealth() <= 0) {
                 System.out.println("The " + enemy.getEType() + " has been slain!");
+                if (enrage) {
+                    System.out.println("Because you enraged the enemy, you are rewarded!");
+                    rewards(player);
+                }
             }
 
         }
@@ -316,7 +329,7 @@ public class Main {
 
     public static void finalBoss(Player player) {
         System.out.println("You enter a throne room. Your journey is almost over...");
-        Enemy boss = new Enemy(" Zariel, Archduke of Avernus", 50, new double[] {0.5, 0.5, 0.5, 0, 0.5, 0.5, 0.5}, 18, DamageType.FIRE);
+        Enemy boss = new Enemy(" Zariel, Archduke of Avernus", 10, new double[] {0.5, 0.5, 0.5, 0, 0.5, 0.5, 0.5}, 18, DamageType.FIRE);
         fight(new Enemy[] {boss}, player, 10);
     }
 
