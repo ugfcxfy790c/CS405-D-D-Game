@@ -81,7 +81,7 @@ public class Main {
             System.out.println("Your turn:");
             boolean running = true;
             while (running) {
-                System.out.println("Do you want to use a weapon or an item? (WEAPON/ITEM)");
+                System.out.println("Do you want to use a weapon, item, or spell? (WEAPON/ITEM/SPELL)");
                 String choice;
                 choice = input.nextLine().toUpperCase();
                 switch (choice) {
