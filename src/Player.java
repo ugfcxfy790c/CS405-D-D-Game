@@ -74,9 +74,9 @@ public class Player {
                 if (this.inventory[i].isExpended()) this.inventory[i] = null;
             }
         }
-        for (int j = 0; j < this.spells.length; j++) {
-            if (this.spells[j] != null && this.spells[j].isUsed()) {
-                this.spells[j] = null;
+        for (Spell spell : this.spells) {
+            if (spell != null && !spell.isCharged()) {
+                spell.charge();
             }
         }
     }
