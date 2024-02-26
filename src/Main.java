@@ -44,8 +44,7 @@ public class Main {
         Enemy e16 = new Enemy("Baby Tarasque", difficulty, new double[] {0.5, 0.5, 0.5, 0.1, 5, 0.1, 1}, 15, DamageType.SLASHING);
 
 
-        //return new Enemy[]{e1, e2, e3, e4, e5, e6, e7, e8, e9, e10, e11, e12, e13, e14, e15, e16};
-        return new Enemy[] {e7};
+        return new Enemy[]{e1, e2, e3, e4, e5, e6, e7, e8, e9, e10, e11, e12, e13, e14, e15, e16};
     }
 
     public static void fight(Enemy[] eList, Player player, int roomNumber) {
@@ -95,7 +94,7 @@ public class Main {
                     input.nextLine();
                     double dmg = player.damageToEnemy(enemy, weaponSelect);
                     System.out.println("You attack the " + enemy.getEType() + " with your " + player.getWeapon(weaponSelect).getName() + ", doing " + dmg + " damage.");
-                    if (enemy.getEType() == "Mr. Cosgrove" && player.getWeapon(weaponSelect).getType() == DamageType.PSYCHIC) {
+                    if (enemy.getEType().equals("Mr. Cosgrove") && player.getWeapon(weaponSelect).getType() == DamageType.PSYCHIC) {
                         System.out.println("The mental pain only seems to heal him!");
                     }
                     running = false;
@@ -125,35 +124,35 @@ public class Main {
         System.out.println("Fists, Sword, Poisoned Dagger, Club, Spear, Torch, Taser, Tuning Fork");
         Scanner input = new Scanner(System.in);
         String choice = input.nextLine();
-        if (choice.toUpperCase().equals("FISTS")) {
+        if (choice.equalsIgnoreCase("FISTS")) {
             player.getWeapon(0).levelUp();
             System.out.println("You have leveled up your Fists!");
         }
-        if (choice.toUpperCase().equals("SWORD")) {
+        else if (choice.equalsIgnoreCase("SWORD")) {
             player.getWeapon(1).levelUp();
             System.out.println("You have leveled up your Sword!");
         }
-        if (choice.toUpperCase().equals("POISONED DAGGER")) {
+        else if (choice.equalsIgnoreCase("POISONED DAGGER")) {
             player.getWeapon(2).levelUp();
             System.out.println("You have leveled up your Poisoned Dagger!");
         }
-        if (choice.toUpperCase().equals("CLUB")) {
+        else if (choice.equalsIgnoreCase("CLUB")) {
             player.getWeapon(3).levelUp();
             System.out.println("You have leveled up your Club!");
         }
-        if (choice.toUpperCase().equals("SPEAR")) {
+        else if (choice.equalsIgnoreCase("SPEAR")) {
             player.getWeapon(4).levelUp();
             System.out.println("You have leveled up your Spear!");
         }
-        if (choice.toUpperCase().equals("TORCH")) {
+        else if (choice.equalsIgnoreCase("TORCH")) {
             player.getWeapon(5).levelUp();
             System.out.println("You have leveled up your Torch!");
         }
-        if (choice.toUpperCase().equals("TASER")) {
+        else if (choice.equalsIgnoreCase("TASER")) {
             player.getWeapon(6).levelUp();
             System.out.println("You have leveled up your Taser!");
         }
-        if (choice.toUpperCase().equals("TUNING FORK")) {
+        else if (choice.equalsIgnoreCase("TUNING FORK")) {
             player.getWeapon(7).levelUp();
             System.out.println("You have leveled up your Tuning Fork!");
         }

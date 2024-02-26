@@ -1,5 +1,5 @@
 public class Weapon {
-    private String name;
+    private final String name;
     private int level;
     private double baseDamage;
     //calls the DamageType enum to determine type.
@@ -26,6 +26,7 @@ public class Weapon {
             this.baseDamage = 20;
             this.level = 1;
         }
+
         else {
             this.baseDamage = 0;
         }
