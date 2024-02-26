@@ -1,5 +1,5 @@
 public class Weapon {
-    private String name;
+    private final String name;
     private int level;
     private double baseDamage;
     //calls the DamageType enum to determine type.
@@ -26,6 +26,7 @@ public class Weapon {
             this.baseDamage = 20;
             this.level = 1;
         }
+
         else {
             this.baseDamage = 0;
         }
@@ -62,10 +63,11 @@ public class Weapon {
 
     //will add player armor class when available
     //potentially a player curse could be implemented here by increasing the multiplier of the subtraction
-    public double doDamage(Enemy monster, Player user) {
+    public double doDamage(Enemy monster, Player user, boolean luck) {
         double roll = Enemy.diceRoller(20) + user.getAtk();
+        if (luck) roll += (monster.getAtk());
         if (roll >= monster.getAC()) {
-            return (this.baseDamage / 20.0 * Enemy.diceRoller(20) + user.getAtk()) * monster.getRes(this.type);
+            return ((this.baseDamage / 20.0) * (Enemy.diceRoller(20) + user.getAtk())) * monster.getRes(this.type);
         }
         return 0;
     }

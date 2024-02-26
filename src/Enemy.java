@@ -13,8 +13,11 @@ public static void main(String[] args) {
     private double maxDmg;
     private DamageType type;
     private int aC;
+    private boolean blinded;
+    static Random dice = new Random();
     
     public Enemy(String EType, double difficulty, double[] res, int aC, DamageType type) {
+        this.blinded = false;
         this.EType = EType;
         this.difficulty = difficulty;
         this.res = res;
@@ -26,7 +29,6 @@ public static void main(String[] args) {
     }
 
     public static int diceRoller(int nSides) {
-        Random dice = new Random();
         return dice.nextInt(nSides) + 1;
     }
 
@@ -64,6 +66,12 @@ public static void main(String[] args) {
         return 1.0;
     }
 
+    public void randomizeRes() {
+        for (int i = 0; i < this.res.length; i++) {
+            this.res[i] = (dice.nextDouble() * 2) + 0.1;
+        }
+    }
+
     public double getHealth() {
         return this.health;
     }
@@ -72,8 +80,12 @@ public static void main(String[] args) {
         return this.atk;
     }
 
-    public double getMaxDmg() {
-        return this.maxDmg;
+    public void blind() {
+        this.blinded = true;
+    }
+
+    public void setMaxDmg(double multiplier) {
+        this.maxDmg *= multiplier;
     }
 
     public int getAC() {
@@ -84,9 +96,6 @@ public static void main(String[] args) {
         return this.type;
     }
 
-    public boolean eAttack(int roll) {
-        return (roll >= this.aC);
-    }
 
     public void eDamage(double damage) {
         this.health -= damage;
@@ -95,6 +104,7 @@ public static void main(String[] args) {
     //Makes an attack roll and does damage to the player if neccesary
     public int dmgPlayer(int pAC) {
         double roll = diceRoller(20) + atk;
+        if (this.blinded) roll -= this.atk;
         if (roll >= pAC) {
             return dmgRollPlayer();
         }

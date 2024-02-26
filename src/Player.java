@@ -10,16 +10,19 @@ public class Player {
     private int aC;
     private double atk;
     private double[] res;
-
     private int itemCount;
+    private boolean lucky;
+    private Spell[] spells;
 
 
     public Player(double health, int aC, int atk) {
+        this.lucky = false;
         this.health = health;
         this.aC = aC;
         this.atk = atk;
         this.res = new double [] {1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0};
-        this.inventory = new Item[9];
+        this.inventory = new Item[15];
+        this.spells = new Spell[5];
         this.weapons = new Weapon[8];
         this.weapons[0] = new Weapon("fists");
         this.weapons[1] = new Weapon("sword");
@@ -42,6 +45,10 @@ public class Player {
         return this.aC;
     }
 
+    public void getLucky() {
+        this.lucky = true;
+    }
+
     public int getItemCount() {return this.itemCount;}
 
     public void addAC(int mod) {
@@ -61,10 +68,15 @@ public class Player {
     }
 
     public void updateInventory() {
-        for (int i = 0; i < 9; i ++) {
+        for (int i = 0; i < this.inventory.length; i ++) {
             if (this.inventory[i] != null) {
                 this.inventory[i].update();
                 if (this.inventory[i].isExpended()) this.inventory[i] = null;
+            }
+        }
+        for (int j = 0; j < this.spells.length; j++) {
+            if (this.spells[j] != null && this.spells[j].isUsed()) {
+                this.spells[j] = null;
             }
         }
     }
@@ -119,7 +131,7 @@ public class Player {
     }
 
     public double damageToEnemy(Enemy enemy, int index) {
-        double damage = weapons[index].doDamage(enemy, this);
+        double damage = weapons[index].doDamage(enemy, this, this.lucky);
         enemy.eDamage(damage);
         return damage;
     }
