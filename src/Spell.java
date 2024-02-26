@@ -21,7 +21,7 @@ public class Spell {
         int number = Enemy.diceRoller(100);
         SpellType nType;
         if (number <= 60) {
-            nType = null;
+            return null;
         } else if (number <= 70) {
             nType = SpellType.LUCK;
         } else if (number <= 80) {

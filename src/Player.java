@@ -179,7 +179,7 @@ public class Player {
         for (int i = 0; i < this.spells.length; i++) {
             if (this.spells[i] == null) {
                 this.spells[i] = spell;
-                System.out.println("You unlocked " + spell.getName() + ".");
+                if (spell != null) System.out.println("You unlocked " + spell.getName() + ".");
                 break;
             }
         }
