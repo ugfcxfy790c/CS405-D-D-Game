@@ -33,27 +33,27 @@ public class Item {
 
     public static Item spawn(Player user) {
         Random random = new Random();
-        double randnum = random.nextDouble() * 90;
+        double randnum = random.nextDouble() * 100;
         DamageType nType;
         if (randnum < 11) {
             nType = DamageType.BLUDGEONING;
-        } else if (randnum >= 11 && randnum < 22) {
+        } else if (randnum >= 11 && randnum < 18) {
             nType = DamageType.SLASHING;
-        } else if (randnum >= 22 && randnum < 33) {
+        } else if (randnum >= 18 && randnum < 25) {
             nType = DamageType.PIERCING;
-        } else if (randnum >= 33 && randnum < 43) {
+        } else if (randnum >= 25 && randnum <32) {
             nType = DamageType.ELECTRICITY;
-        } else if (randnum >= 43 && randnum < 50) {
+        } else if (randnum >= 32 && randnum < 39) {
             nType = DamageType.FIRE;
-        } else if (randnum >= 50 && randnum < 57) {
+        } else if (randnum >= 39 && randnum < 46) {
             nType = DamageType.POISON;
-        } else if (randnum >= 57 && randnum < 63) {
+        } else if (randnum >= 46 && randnum < 53) {
             nType = DamageType.PSYCHIC;
-        } else if (randnum >= 63 && randnum < 80) {
+        } else if (randnum >= 53 && randnum < 80) {
             nType = DamageType.HEALTH;
-        } else if (randnum >= 80 && randnum < 85) {
+        } else if (randnum >= 80 && randnum < 90) {
             nType = DamageType.INVINCIBILITY;
-        } else if (randnum >= 85 && randnum < 90) {
+        } else if (randnum >= 90 && randnum < 100) {
             nType = DamageType.POWER;
         }
         else nType = DamageType.HEALTH;
