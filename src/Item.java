@@ -49,11 +49,11 @@ public class Item {
                 this.user.damageToPlayer(-20);
                 this.uses = 3;
             }
-            case DamageType.INVINCIBILITY -> {
+            case INVINCIBILITY -> {
                 this.user.addAC();
                 this.uses = 3;
             }
-            case DamageType.POWER -> {
+            case POWER -> {
                 this.user.addAtk();
                 this.uses = 3;
             }
@@ -64,12 +64,12 @@ public class Item {
         if (this.active) this.uses++;
         if (this.uses >= 3) {
             switch (this.type) {
-                case DamageType.BLUDGEONING -> user.setRes(DamageType.BLUDGEONING, -0.2);
-                case DamageType.ELECTRICITY -> user.setRes(DamageType.ELECTRICITY, -0.2);
-                case DamageType.FIRE -> user.setRes(DamageType.FIRE, -0.2);
-                case DamageType.POISON -> user.setRes(DamageType.POISON, -0.2);
-                case DamageType.SLASHING -> user.setRes(DamageType.SLASHING, -0.2);
-                case DamageType.PIERCING -> user.setRes(DamageType.PIERCING, -0.2);
+                case BLUDGEONING -> user.setRes(DamageType.BLUDGEONING, -0.2);
+                case ELECTRICITY -> user.setRes(DamageType.ELECTRICITY, -0.2);
+                case FIRE -> user.setRes(DamageType.FIRE, -0.2);
+                case POISON -> user.setRes(DamageType.POISON, -0.2);
+                case SLASHING -> user.setRes(DamageType.SLASHING, -0.2);
+                case PIERCING -> user.setRes(DamageType.PIERCING, -0.2);
             }
             this.expended = true;
         }
