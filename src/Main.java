@@ -7,11 +7,16 @@ public class Main {
         Player player = new Player(100, 15, 5);
         int gameLength = 30;
         for (int i = 0; i < gameLength; i++) {
-            int randCond = Enemy.diceRoller(100);
-            System.out.println("\n");
-            roomCondition(player, randCond, false);
-            newRoom(i + 1, player);
-            roomCondition(player, randCond, true);
+            if (i == gameLength - 1) {
+                finalBoss(player);
+            }
+            else {
+                int randCond = Enemy.diceRoller(100);
+                System.out.println("\n");
+                roomCondition(player, randCond, false);
+                newRoom(i + 1, player);
+                roomCondition(player, randCond, true);
+            }
         }
         System.out.println("You win!");
     }
@@ -52,8 +57,8 @@ public class Main {
         Enemy e16 = new Enemy("Baby Tarasque", difficulty, new double[] {0.5, 0.5, 0.5, 0.1, 5, 0.1, 1}, 15, DamageType.SLASHING);
 
 
-        //return new Enemy[]{e1, e2, e3, e4, e5, e6, e7, e8, e9, e10, e11, e12, e13, e14, e15, e16};
-        return new Enemy[] {e14};
+        return new Enemy[]{e1, e2, e3, e4, e5, e6, e7, e8, e9, e10, e11, e12, e13, e14, e15, e16};
+        //return new Enemy[] {e14};
     }
 
     public static void fight(Enemy[] eList, Player player, int roomNumber) {
@@ -62,6 +67,9 @@ public class Main {
         String entMessage;
         if (enemy.getEType() == "Mr. Cosgrove") {
             entMessage = " walks slowly into the wroom while cackling maniacally!";
+        }
+        else if (enemy.getEType() == "Zariel, Archduke of Avernus") {
+            entMessage = "charges at you!";
         }
         else if (entry == 1) {
             entMessage = " emerges from the shadows!";
@@ -84,8 +92,13 @@ public class Main {
             if (riddler == 0) {
                 System.out.println("Very well. To battle!");
             }
+
+            else if (riddler == 1) {
+                enemy = riddle(enemy, player);
+            }
             else {
-                riddle(enemy, player);
+                invalidReply();
+                fight(eList, player, roomNumber);
             }
         }
 
@@ -100,6 +113,7 @@ public class Main {
                 System.out.println("Do you want to use a weapon, item, or spell? (WEAPON/ITEM/SPELL)");
                 String choice;
                 choice = input.nextLine().toUpperCase();
+
                 switch (choice) {
                     case "ITEM" -> {
                         System.out.println("Choose your item:");
@@ -127,6 +141,7 @@ public class Main {
                         }
                         running = false;
                     }
+
                     case "SPELL" -> {
                         System.out.println("Choose your spell:");
                         System.out.println(player.showSpells());
@@ -202,6 +217,7 @@ public class Main {
                 System.out.println("Invalid weapon.");
             }
         }
+
     }
 
     public static void roomCondition(Player player, int rand, boolean condition) {
@@ -296,4 +312,15 @@ public class Main {
         return sphinx;
     }
 
+
+    public static void finalBoss(Player player) {
+        System.out.println("You enter a throne room. Your journey is almost over...");
+        Enemy boss = new Enemy(" Zariel, Archduke of Avernus", 50, new double[] {0.5, 0.5, 0.5, 0, 0.5, 0.5, 0.5}, 18, DamageType.FIRE);
+        fight(new Enemy[] {boss}, player, 10);
+    }
+
+    public static void invalidReply(){
+        System.out.println("Invalid reply!!  ");
+
+    }
 }
