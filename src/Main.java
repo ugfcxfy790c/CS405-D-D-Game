@@ -58,14 +58,14 @@ public class Main {
 
 
         return new Enemy[]{e1, e2, e3, e4, e5, e6, e7, e8, e9, e10, e11, e12, e13, e14, e15, e16};
-        //return new Enemy[] {e14};
+
     }
 
     public static void fight(Enemy[] eList, Player player, int roomNumber) {
         Enemy enemy = Enemy.spawnEnemy(eList);
         int entry = Enemy.diceRoller(5);
         String entMessage;
-        if (enemy.getEType() == "Mr. Cosgrove") {
+        if (enemy.getEType().equals("Mr. Cosgrove")) {
             entMessage = " walks slowly into the wroom while cackling maniacally!";
         }
         else if (enemy.getEType() == "Zariel, Archduke of Avernus") {
@@ -84,7 +84,7 @@ public class Main {
         }
         System.out.println("A " + enemy.getEType() + entMessage);
 
-        if (enemy.getEType() == "Sphinx") {
+        if (enemy.getEType().equals("Sphinx")) {
             System.out.println("Answer me this, and you will be greatly rewarded. Answer wrong, and die painfully! Answer nothing, and I will not be as angry while fighting you.");
             System.out.println("Will you attempt to answer the Sphinx's riddle? (0 if No, 1 if Yes)");
             int riddler = input.nextInt();
@@ -116,7 +116,6 @@ public class Main {
 
                 switch (choice) {
                     case "ITEM" -> {
-                        System.out.println("Choose your item:");
                         System.out.println(player.showInventory());
                         if (player.getItemCount() == 0) {
                             System.out.println("You have no items.");
@@ -143,14 +142,16 @@ public class Main {
                     }
 
                     case "SPELL" -> {
-                        System.out.println("Choose your spell:");
                         System.out.println(player.showSpells());
-                        int spellSelect = input.nextInt();
-                        input.nextLine();
-                        Spell selection = player.getSpell(spellSelect);
-                        System.out.println("You use " + selection.getName() + ".");
-                        selection.cast(enemy);
-                        running = false;
+                        if (player.getSpellCount() > 0) {
+                            int spellSelect = input.nextInt();
+                            input.nextLine();
+                            Spell selection = player.getSpell(spellSelect);
+                            System.out.println("You use " + selection.getName() + ".");
+                            selection.cast(enemy);
+                            running = false;
+                        }
+                        else System.out.println("You have no available spells right now.");
                     }
                 }
             }
