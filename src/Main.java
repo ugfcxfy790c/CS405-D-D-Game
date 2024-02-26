@@ -172,11 +172,11 @@ public class Main {
 
     public static void roomCondition(Player player, int rand, boolean condition) {
         if (rand <= 50) {
-            if (condition == false) {
+            if (!condition) {
                 System.out.println("You enter a boring square room...");
             }
         }
-        else if (50 < rand && rand <= 60) {
+        else if (rand <= 60) {
             if (!condition) {
                 System.out.println("You enter a room so dark you can barely see...");
                 player.addAtk(-2);
@@ -185,7 +185,7 @@ public class Main {
                 player.addAtk(2);
             }
         }
-        else if (60 < rand && rand <= 70) {
+        else if (rand <= 70) {
             if (!condition) {
                 System.out.println("You enter a room with muddy ground. Your movement is restricted...");
                 player.addAC(-2);
@@ -194,11 +194,11 @@ public class Main {
                 player.addAC(2);
             }
         }
-        else if (70 < rand && rand <= 80) {
+        else if (rand <= 80) {
             System.out.println("As you enter the room, you accidentally step on a glyph of warding...");
             player.damageToPlayer(5, null);
         }
-        else if (80 < rand && rand <= 90) {
+        else if (rand <= 90) {
             if (!condition) {
                 System.out.println("As you enter the room, you feel inspired...");
                 player.addAC(1);
@@ -210,7 +210,7 @@ public class Main {
             }
         }
         else {
-            if (condition == false) {
+            if (!condition) {
                 player.setRes(DamageType.PIERCING, (Enemy.diceRoller(100) - 50) / 100.0);
                 player.setRes(DamageType.SLASHING, (Enemy.diceRoller(100) - 50) / 100.0);
                 player.setRes(DamageType.FIRE, (Enemy.diceRoller(100) - 50) / 100.0);
