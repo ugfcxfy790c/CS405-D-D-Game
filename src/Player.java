@@ -1,7 +1,3 @@
-//Hello 
-
-import java.util.Random;
-
 public class Player {
 
     private double health;
@@ -34,12 +30,6 @@ public class Player {
         this.weapons[7] = new Weapon("tuning fork");
     }
 
-
-
-    public static int diceRoller(int nSides) {
-        Random dice = new Random();
-        return dice.nextInt(nSides) + 1;
-    }
 
     public int getAC() {
         return this.aC;
@@ -159,6 +149,16 @@ public class Player {
             if (this.inventory[i] != null && !this.inventory[i].isActive()) {
                 print += i + ":  " + this.inventory[i].getName() + "  ";
                 this.itemCount ++;
+            }
+        }
+        return print;
+    }
+
+    public String showSpells() {
+        String print= "";
+        for (int i = 0; i < this.spells.length; i++) {
+            if (this.spells[i].isCharged()) {
+                print += i + ": " + this.spells[i].getName() + "    ";
             }
         }
         return print;
