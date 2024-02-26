@@ -81,7 +81,7 @@ public class Main {
                 System.out.println("Very well. To battle!");
             }
             else {
-
+                riddle(enemy, player);
             }
         }
 
@@ -233,8 +233,40 @@ public class Main {
 
     }
 
-    public static Enemy riddle(Enemy sphinx) {
+    public static Enemy riddle(Enemy sphinx, Player player) {
         int riddle = Enemy.diceRoller(5);
+        String answer;
+        if (riddle == 1) {
+            System.out.println("I am 3/7 chicken, 2/3 cat, and 2/4 goat. What am I?");
+            answer = "CHICAGO";
+        }
+        else if (riddle == 2) {
+            System.out.println("The more you take, the more you leave behind. What am I?");
+            answer = "FOOTSTEPS";
+        }
+        else if (riddle == 3) {
+            System.out.println("I always stand before you, but can never be seen. What am I?");
+            answer = "FUTURE";
+        }
+        else if (riddle == 4) {
+            System.out.println("I am a tree you can hold in your hand. What am I?");
+            answer = "PALM";
+        }
+        else {
+            System.out.println("Who makes me has no need of me. Who buys me has no use for me. Who uses me never sees nor feels me. What am I?");
+            answer = "COFFIN";
+        }
+        System.out.println("Respond, or Die! (Responce should be one word)");
+        if (input.nextLine().toUpperCase().equals(answer)) {
+            System.out.println("Very Clever! You may take your reward and go.");
+            System.out.println("Your armor has been strengthened!");
+            player.addAC(2);
+            sphinx.eDamage(sphinx.getHealth());
+        }
+        else {
+            System.out.println("Fool!");
+            sphinx = Enemy.enrage(sphinx);
+        }
         return sphinx;
     }
 
