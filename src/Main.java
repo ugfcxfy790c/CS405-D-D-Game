@@ -80,8 +80,12 @@ public class Main {
             if (riddler == 0) {
                 System.out.println("Very well. To battle!");
             }
-            else {
+            else if (riddler == 1) {
                 riddle(enemy, player);
+            }
+            else{
+                invalidReply();
+                fight(eList, player, roomNumber);
             }
         }
 
@@ -100,13 +104,17 @@ public class Main {
                     System.out.println(player.showInventory());
                     if (player.getItemCount() == 0) {
                         System.out.println("You have no items.");
-                    } else {
+                    } else if (choice.equals("WEAPON")){
                         int itemSelect = input.nextInt();
                         input.nextLine();
                         Item item = player.getItem(itemSelect);
                         item.use();
                         System.out.println("You use your " + item.getName() + ".");
                         running = false;
+                    }
+                    else{
+                        invalidReply();
+                        fight(eList, player, roomNumber);
                     }
                 } else if (choice.equals("WEAPON")) {
                     System.out.println("Choose your weapon:");
@@ -183,6 +191,11 @@ public class Main {
             else {
                 System.out.println("Invalid weapon.");
             }
+        }
+
+        else{
+            invalidReply();
+            rewards(player);
         }
     }
 
@@ -276,6 +289,10 @@ public class Main {
             sphinx = Enemy.enrage(sphinx);
         }
         return sphinx;
+    }
+
+    public static void invalidReply(){
+        System.out.println("Invalid reply!!  ");
     }
 
 }
