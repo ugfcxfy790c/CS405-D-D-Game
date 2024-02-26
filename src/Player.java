@@ -1,7 +1,3 @@
-//Hello 
-
-import java.util.Random;
-
 public class Player {
 
     private double health;
@@ -34,12 +30,6 @@ public class Player {
         this.weapons[7] = new Weapon("tuning fork");
     }
 
-
-
-    public static int diceRoller(int nSides) {
-        Random dice = new Random();
-        return dice.nextInt(nSides) + 1;
-    }
 
     public int getAC() {
         return this.aC;
@@ -74,9 +64,9 @@ public class Player {
                 if (this.inventory[i].isExpended()) this.inventory[i] = null;
             }
         }
-        for (int j = 0; j < this.spells.length; j++) {
-            if (this.spells[j] != null && this.spells[j].isUsed()) {
-                this.spells[j] = null;
+        for (Spell spell : this.spells) {
+            if (spell != null && !spell.isCharged()) {
+                spell.charge();
             }
         }
     }
@@ -152,6 +142,8 @@ public class Player {
 
     public Item getItem(int index) { return this.inventory[index]; }
 
+    public Spell getSpell(int index) { return this.spells[index]; }
+
     public String showInventory() {
         String print = "";
         this.itemCount = 0;
@@ -164,10 +156,30 @@ public class Player {
         return print;
     }
 
+    public String showSpells() {
+        String print= "";
+        for (int i = 0; i < this.spells.length; i++) {
+            if (this.spells[i].isCharged()) {
+                print += i + ": " + this.spells[i].getName() + "    ";
+            }
+        }
+        return print;
+    }
+
     public void addToInventory(Item item) {
         for (int i = 0; i < this.inventory.length; i++) {
             if (this.inventory[i] == null) {
                 this.inventory[i] = item;
+                break;
+            }
+        }
+    }
+
+    public void addSpell(Spell spell) {
+        for (int i = 0; i < this.spells.length; i++) {
+            if (this.spells[i] == null) {
+                this.spells[i] = spell;
+                if (spell != null) System.out.println("You unlocked " + spell.getName() + ".");
                 break;
             }
         }
