@@ -1,5 +1,5 @@
 public class Weapon {
-    private String name;
+    private final String name;
     private int level;
     private double baseDamage;
     //calls the DamageType enum to determine type.
@@ -19,12 +19,17 @@ public class Weapon {
             case "fists" -> this.type = DamageType.BLUDGEONING;
             case "torch" -> this.type = DamageType.FIRE;
             case "taser" -> this.type = DamageType.ELECTRICITY;
+            case "tuning fork" -> this.type = DamageType.PSYCHIC;
         }
         //define base damage of each weapon type
-        if (this.name.equals("fists"))
+        if (this.name.equals("fists")) {
             this.baseDamage = 20;
-        else
+            this.level = 1;
+        }
+
+        else {
             this.baseDamage = 0;
+        }
     }
 
     public String getName() {
@@ -48,6 +53,7 @@ public class Weapon {
                 case "spear" -> this.baseDamage = 70;
                 case "torch" -> this.baseDamage = 60;
                 case "taser" -> this.baseDamage = 70;
+                case "tuning fork" -> this.baseDamage = 50;
             }
         }
         else {
@@ -57,10 +63,11 @@ public class Weapon {
 
     //will add player armor class when available
     //potentially a player curse could be implemented here by increasing the multiplier of the subtraction
-    public double doDamage(Enemy monster, Player user) {
+    public double doDamage(Enemy monster, Player user, boolean luck) {
         double roll = Enemy.diceRoller(20) + user.getAtk();
-        if (roll > monster.getAC()) {
-            return (this.baseDamage / 20.0) * (Enemy.diceRoller(20) + user.getAtk()) * monster.getRes(this.type);
+        if (luck) roll += (monster.getAtk());
+        if (roll >= monster.getAC()) {
+            return ((this.baseDamage / 20.0) * (Enemy.diceRoller(20) + user.getAtk())) * monster.getRes(this.type);
         }
         return 0;
     }
