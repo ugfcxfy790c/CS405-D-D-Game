@@ -8,6 +8,7 @@ public class Main {
         int gameLength = 30;
         for (int i = 0; i < gameLength; i++) {
             int randCond = Enemy.diceRoller(100);
+            System.out.println("\n");
             roomCondition(player, randCond, false);
             newRoom(i + 1, player);
             roomCondition(player, randCond, true);
@@ -171,7 +172,9 @@ public class Main {
 
     public static void roomCondition(Player player, int rand, boolean condition) {
         if (rand <= 50) {
-            System.out.println("You enter a boring square room...");
+            if (condition == false) {
+                System.out.println("You enter a boring square room...");
+            }
         }
         else if (50 < rand && rand <= 60) {
             if (!condition) {
@@ -207,14 +210,16 @@ public class Main {
             }
         }
         else {
+            if (condition == false) {
+                player.setRes(DamageType.PIERCING, (Enemy.diceRoller(100) - 50) / 100.0);
+                player.setRes(DamageType.SLASHING, (Enemy.diceRoller(100) - 50) / 100.0);
+                player.setRes(DamageType.FIRE, (Enemy.diceRoller(100) - 50) / 100.0);
+                player.setRes(DamageType.ELECTRICITY, (Enemy.diceRoller(100) - 50) / 100.0);
+                player.setRes(DamageType.POISON, (Enemy.diceRoller(100) - 50) / 100.0);
+                player.setRes(DamageType.PSYCHIC, (Enemy.diceRoller(100) - 50) / 100.0);
+            }
             System.out.println("In the next room, you find a wacky potion on the floor. You drink it without hesitation...");
             player.setRes(DamageType.BLUDGEONING, (Enemy.diceRoller(100) - 50) / 100.0);
-            player.setRes(DamageType.PIERCING, (Enemy.diceRoller(100) - 50) / 100.0);
-            player.setRes(DamageType.SLASHING, (Enemy.diceRoller(100) - 50) / 100.0);
-            player.setRes(DamageType.FIRE, (Enemy.diceRoller(100) - 50) / 100.0);
-            player.setRes(DamageType.ELECTRICITY, (Enemy.diceRoller(100) - 50) / 100.0);
-            player.setRes(DamageType.POISON, (Enemy.diceRoller(100) - 50) / 100.0);
-            player.setRes(DamageType.PSYCHIC, (Enemy.diceRoller(100) - 50) / 100.0);
         }
 
     }
