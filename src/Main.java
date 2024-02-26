@@ -48,15 +48,18 @@ public class Main {
         Enemy e16 = new Enemy("Baby Tarasque", difficulty, new double[] {0.5, 0.5, 0.5, 0.1, 5, 0.1, 1}, 15, DamageType.SLASHING);
 
 
-        return new Enemy[]{e1, e2, e3, e4, e5, e6, e7, e8, e9, e10, e11, e12, e13, e14, e15, e16};
-        //return new Enemy[] {e7};
+        //return new Enemy[]{e1, e2, e3, e4, e5, e6, e7, e8, e9, e10, e11, e12, e13, e14, e15, e16};
+        return new Enemy[] {e14};
     }
 
     public static void fight(Enemy[] eList, Player player, int roomNumber) {
         Enemy enemy = Enemy.spawnEnemy(eList);
         int entry = Enemy.diceRoller(5);
         String entMessage;
-        if (entry == 1) {
+        if (enemy.getEType() == "Mr. Cosgrove") {
+            entMessage = " walks slowly into the wroom while cackling maniacally!";
+        }
+        else if (entry == 1) {
             entMessage = " emerges from the shadows!";
         } else if (entry == 2) {
             entMessage = " enters the room and screams!";
@@ -68,6 +71,19 @@ public class Main {
             entMessage = " pops into existence!";
         }
         System.out.println("A " + enemy.getEType() + entMessage);
+
+        if (enemy.getEType() == "Sphinx") {
+            System.out.println("Answer me this, and you will be greatly rewarded. Answer wrong, and die painfully! Answer nothing, and I will not be as angry while fighting you.");
+            System.out.println("Will you attempt to answer the Sphinx's riddle? (0 if No, 1 if Yes)");
+            int riddler = input.nextInt();
+            input.nextLine();
+            if (riddler == 0) {
+                System.out.println("Very well. To battle!");
+            }
+            else {
+
+            }
+        }
 
         if (roomNumber == 1 && enemy.getRes(DamageType.BLUDGEONING) == 0) {
             System.out.println("The gods, noticing that the " + enemy.getEType() + " is immune to your only source of damage, take pity on you.");
@@ -204,6 +220,8 @@ public class Main {
         }
         else {
             if (condition == false) {
+                System.out.println("In the next room, you find a wacky potion on the floor. You drink it without hesitation...");
+                player.setRes(DamageType.BLUDGEONING, (Enemy.diceRoller(100) - 50) / 100.0);
                 player.setRes(DamageType.PIERCING, (Enemy.diceRoller(100) - 50) / 100.0);
                 player.setRes(DamageType.SLASHING, (Enemy.diceRoller(100) - 50) / 100.0);
                 player.setRes(DamageType.FIRE, (Enemy.diceRoller(100) - 50) / 100.0);
@@ -211,10 +229,13 @@ public class Main {
                 player.setRes(DamageType.POISON, (Enemy.diceRoller(100) - 50) / 100.0);
                 player.setRes(DamageType.PSYCHIC, (Enemy.diceRoller(100) - 50) / 100.0);
             }
-            System.out.println("In the next room, you find a wacky potion on the floor. You drink it without hesitation...");
-            player.setRes(DamageType.BLUDGEONING, (Enemy.diceRoller(100) - 50) / 100.0);
         }
 
+    }
+
+    public static Enemy riddle(Enemy sphinx) {
+        int riddle = Enemy.diceRoller(5);
+        return sphinx;
     }
 
 }
