@@ -2,12 +2,15 @@ import java.util.Scanner;
 public class Main {
 
     static Scanner input = new Scanner(System.in);
-
+    
     public static void main(String[] Args) {
         Player player = new Player(100, 15, 5);
         int gameLength = 30;
         for (int i = 0; i < gameLength; i++) {
+            int randCond = Enemy.diceRoller(100);
+            roomCondition(player, randCond, false);
             newRoom(i + 1, player);
+            roomCondition(player, randCond, true);
         }
         System.out.println("You win!");
     }
@@ -45,6 +48,7 @@ public class Main {
 
 
         return new Enemy[]{e1, e2, e3, e4, e5, e6, e7, e8, e9, e10, e11, e12, e13, e14, e15, e16};
+        //return new Enemy[] {e7};
     }
 
     public static void fight(Enemy[] eList, Player player, int roomNumber) {
@@ -156,6 +160,56 @@ public class Main {
             player.getWeapon(7).levelUp();
             System.out.println("You have leveled up your Tuning Fork!");
         }
+    }
+
+    public static void roomCondition(Player player, int rand, boolean condition) {
+        if (rand <= 50) {
+            System.out.println("You enter a boring square room...");
+        }
+        else if (50 < rand && rand <= 60) {
+            if (condition = false) {
+                System.out.println("You enter a room so dark you can barely see...");
+                player.addAtk(-2);
+            }
+            else {
+                player.addAtk(2);
+            }
+        }
+        else if (60 < rand && rand <= 70) {
+            if (condition = false) {
+                System.out.println("You enter a room with muddy ground. Your movement is restricted...");
+                player.addAC(-2);
+            }
+            else {
+                player.addAC(2);
+            }
+        }
+        else if (70 < rand && rand <= 80) {
+            System.out.println("As you enter the room, you accidentally step on a glyph of warding...");
+            player.damageToPlayer(5, null);
+        }
+        else if (80 < rand && rand <= 90) {
+            if (condition == false) {
+                System.out.println("As you enter the room, you feel inspired...");
+                player.addAC(1);
+                player.addAtk(1);
+            }
+            else {
+                player.addAC(-1);
+                player.addAtk(-1);
+            }
+        }
+        else {
+            System.out.println("In the next room, you find a wacky potion on the floor. You drink it without hesitation...");
+            player.setRes(DamageType.BLUDGEONING, (Enemy.diceRoller(100) - 50) / 100.0);
+            player.setRes(DamageType.PIERCING, (Enemy.diceRoller(100) - 50) / 100.0);
+            player.setRes(DamageType.SLASHING, (Enemy.diceRoller(100) - 50) / 100.0);
+            player.setRes(DamageType.FIRE, (Enemy.diceRoller(100) - 50) / 100.0);
+            player.setRes(DamageType.ELECTRICITY, (Enemy.diceRoller(100) - 50) / 100.0);
+            player.setRes(DamageType.POISON, (Enemy.diceRoller(100) - 50) / 100.0);
+            player.setRes(DamageType.PSYCHIC, (Enemy.diceRoller(100) - 50) / 100.0);
+        }
+
     }
 
 }

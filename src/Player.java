@@ -44,16 +44,16 @@ public class Player {
 
     public int getItemCount() {return this.itemCount;}
 
-    public void addAC() {
-        this.aC++;
+    public void addAC(int mod) {
+        this.aC+= mod;
     }
 
     public double getAtk() {
         return this.atk;
     }
 
-    public void addAtk() {
-        this.atk++;
+    public void addAtk(int mod) {
+        this.atk += mod;
     }
 
     public double getHealth(){
