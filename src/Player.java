@@ -142,6 +142,8 @@ public class Player {
 
     public Item getItem(int index) { return this.inventory[index]; }
 
+    public Spell getSpell(int index) { return this.spells[index]; }
+
     public String showInventory() {
         String print = "";
         this.itemCount = 0;
@@ -168,6 +170,16 @@ public class Player {
         for (int i = 0; i < this.inventory.length; i++) {
             if (this.inventory[i] == null) {
                 this.inventory[i] = item;
+                break;
+            }
+        }
+    }
+
+    public void addSpell(Spell spell) {
+        for (int i = 0; i < this.spells.length; i++) {
+            if (this.spells[i] == null) {
+                this.spells[i] = spell;
+                System.out.println("You unlocked " + spell.getName() + ".");
                 break;
             }
         }

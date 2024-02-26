@@ -23,6 +23,10 @@ public class Main {
         Item ite = Item.spawn(player);
         player.addToInventory(ite);
         System.out.println("You found a " + ite.getName() + " on the ground!");
+        //print statement for below already included in addSpell()
+        //null condition already included in spawn()
+        Spell spe = Spell.spawn(player);
+        player.addSpell(spe);
         rewards(player);
 
 
@@ -80,29 +84,43 @@ public class Main {
                 System.out.println("Do you want to use a weapon or an item? (WEAPON/ITEM)");
                 String choice;
                 choice = input.nextLine().toUpperCase();
-                if (choice.equals("ITEM")) {
-                    System.out.println(player.showInventory());
-                    if (player.getItemCount() == 0) {
-                        System.out.println("You have no items.");
-                    } else {
-                        int itemSelect = input.nextInt();
+                switch (choice) {
+                    case "ITEM" -> {
+                        System.out.println("Choose your item:");
+                        System.out.println(player.showInventory());
+                        if (player.getItemCount() == 0) {
+                            System.out.println("You have no items.");
+                        } else {
+                            int itemSelect = input.nextInt();
+                            input.nextLine();
+                            Item item = player.getItem(itemSelect);
+                            item.use();
+                            System.out.println("You use your " + item.getName() + ".");
+                            running = false;
+                        }
+                    }
+                    case "WEAPON" -> {
+                        System.out.println("Choose your weapon:");
+                        System.out.println(player.weaponString());
+                        int weaponSelect = input.nextInt();
                         input.nextLine();
-                        Item item = player.getItem(itemSelect);
-                        item.use();
-                        System.out.println("You use your " + item.getName() + ".");
+                        double dmg = player.damageToEnemy(enemy, weaponSelect);
+                        System.out.println("You attack the " + enemy.getEType() + " with your " + player.getWeapon(weaponSelect).getName() + ", doing " + dmg + " damage.");
+                        if (enemy.getEType().equals("Mr. Cosgrove") && player.getWeapon(weaponSelect).getType() == DamageType.PSYCHIC) {
+                            System.out.println("The mental pain only seems to heal him!");
+                        }
                         running = false;
                     }
-                } else if (choice.equals("WEAPON")) {
-                    System.out.println("Choose your weapon:");
-                    System.out.println(player.weaponString());
-                    int weaponSelect = input.nextInt();
-                    input.nextLine();
-                    double dmg = player.damageToEnemy(enemy, weaponSelect);
-                    System.out.println("You attack the " + enemy.getEType() + " with your " + player.getWeapon(weaponSelect).getName() + ", doing " + dmg + " damage.");
-                    if (enemy.getEType().equals("Mr. Cosgrove") && player.getWeapon(weaponSelect).getType() == DamageType.PSYCHIC) {
-                        System.out.println("The mental pain only seems to heal him!");
+                    case "SPELL" -> {
+                        System.out.println("Choose your spell:");
+                        System.out.println(player.showSpells());
+                        int spellSelect = input.nextInt();
+                        input.nextLine();
+                        Spell selection = player.getSpell(spellSelect);
+                        System.out.println("You use " + selection.getName() + ".");
+                        selection.cast(enemy);
+                        running = false;
                     }
-                    running = false;
                 }
             }
 
