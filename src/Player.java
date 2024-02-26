@@ -12,6 +12,7 @@ public class Player {
     private double[] res;
     private int itemCount;
     private boolean lucky;
+    private Spell[] spells;
 
 
     public Player(double health, int aC, int atk) {
@@ -21,6 +22,7 @@ public class Player {
         this.atk = atk;
         this.res = new double [] {1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0};
         this.inventory = new Item[15];
+        this.spells = new Spell[5];
         this.weapons = new Weapon[8];
         this.weapons[0] = new Weapon("fists");
         this.weapons[1] = new Weapon("sword");
@@ -66,10 +68,15 @@ public class Player {
     }
 
     public void updateInventory() {
-        for (int i = 0; i < 9; i ++) {
+        for (int i = 0; i < this.inventory.length; i ++) {
             if (this.inventory[i] != null) {
                 this.inventory[i].update();
                 if (this.inventory[i].isExpended()) this.inventory[i] = null;
+            }
+        }
+        for (int j = 0; j < this.spells.length; j++) {
+            if (this.spells[j] != null && this.spells[j].isUsed()) {
+                this.spells[j] = null;
             }
         }
     }
