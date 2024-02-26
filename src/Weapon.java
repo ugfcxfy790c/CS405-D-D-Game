@@ -63,8 +63,9 @@ public class Weapon {
 
     //will add player armor class when available
     //potentially a player curse could be implemented here by increasing the multiplier of the subtraction
-    public double doDamage(Enemy monster, Player user) {
+    public double doDamage(Enemy monster, Player user, boolean luck) {
         double roll = Enemy.diceRoller(20) + user.getAtk();
+        if (luck) roll += (monster.getAtk());
         if (roll >= monster.getAC()) {
             return ((this.baseDamage / 20.0) * (Enemy.diceRoller(20) + user.getAtk())) * monster.getRes(this.type);
         }

@@ -10,11 +10,12 @@ public class Player {
     private int aC;
     private double atk;
     private double[] res;
-
     private int itemCount;
+    private boolean lucky;
 
 
     public Player(double health, int aC, int atk) {
+        this.lucky = false;
         this.health = health;
         this.aC = aC;
         this.atk = atk;
@@ -40,6 +41,10 @@ public class Player {
 
     public int getAC() {
         return this.aC;
+    }
+
+    public void getLucky() {
+        this.lucky = true;
     }
 
     public int getItemCount() {return this.itemCount;}
@@ -119,7 +124,7 @@ public class Player {
     }
 
     public double damageToEnemy(Enemy enemy, int index) {
-        double damage = weapons[index].doDamage(enemy, this);
+        double damage = weapons[index].doDamage(enemy, this, this.lucky);
         enemy.eDamage(damage);
         return damage;
     }
