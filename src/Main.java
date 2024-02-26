@@ -93,7 +93,7 @@ public class Main {
                 System.out.println("Very well. To battle!");
             }
 
-            else if {riddler == 1} {
+            else if (riddler == 1) {
                 enemy = riddle(enemy, player);
             }
             else {
