@@ -92,11 +92,11 @@ public class Item {
                 this.uses = 3;
             }
             case INVINCIBILITY -> {
-                this.user.addAC();
+                this.user.addAC(1);
                 this.uses = 3;
             }
             case POWER -> {
-                this.user.addAtk();
+                this.user.addAtk(1);
                 this.uses = 3;
             }
         }
