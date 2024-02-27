@@ -191,6 +191,7 @@ public class Main {
                     System.out.println("Because you enraged the enemy, you are rewarded!");
                     rewards(player);
                     rewards(player);
+                    player.heal();
                 }
             }
 
