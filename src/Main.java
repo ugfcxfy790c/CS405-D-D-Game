@@ -39,6 +39,7 @@ public class Main {
 
     public static Enemy[] enemyList(double difficulty) {
 
+
         Enemy e1 = new Enemy("A", true, "Goblin", difficulty, new double[] {1, 1, 1, 1, 1, 1, 1}, 13, DamageType.PIERCING);
         Enemy e2 = new Enemy("A", true, "Cultist", difficulty, new double[] {1, 1.5, 1, 0, 1, 1, 1.5}, 10, DamageType.SLASHING);
         Enemy e3 = new Enemy("A", true, "Skeleton", difficulty, new double[] {5, 0, 0.5, 1, 0.5, 0, 1}, 12, DamageType.BLUDGEONING);
@@ -50,7 +51,7 @@ public class Main {
         Enemy e9 = new Enemy("A", true, "Wraith", difficulty, new double[] {0.5, 1, 0, 1, 3, 0, 1}, 12, DamageType.POISON);
         Enemy e10 = new Enemy("A", true, "Red Slaad", difficulty, new double[] {1, 0.5, 0.75, 0, 2, 1.5, 0}, 12, DamageType.SLASHING);
         Enemy e11 = new Enemy("A", true, "Blue Slaad", difficulty, new double[] {1, 0.5, 0.75, 2, 0, 1.5, 0}, 12, DamageType.SLASHING);
-        Enemy e12 = new Enemy("A", true, "Terminator", difficulty, new double[] {0.5, 1, 0, 1.5, 2.5, 0, 0}, 19, DamageType.BLUDGEONING);
+        Enemy e12 = new Enemy("A", true, "Terminator", difficulty, new double[] {0.5, 1, 0, 1.5, 2.5, 0, 0}, 17, DamageType.BLUDGEONING);
         Enemy e13 = new Enemy("", false, "Mr. Cosgrove", difficulty, new double[] {2, 2, 2, 2, 0, 2, -3}, 18, DamageType.PSYCHIC);
         Enemy e14 = new Enemy("A", true, "Sphinx", difficulty, new double[] {1, 1, 2, 0.25, 0.5, 1, 2}, 14, DamageType.PSYCHIC);
         Enemy e15 = new Enemy("An", true, "Atropal", difficulty, new double[] {0, 1.5, 0, 1, 0, 2, 0.75}, 8, DamageType.FIRE);
@@ -345,7 +346,7 @@ public class Main {
 
     public static void finalBoss(Player player) {
         System.out.println("You enter a throne room. Your journey is almost over...");
-        Enemy boss = new Enemy("", false, "Zariel, Archduke of Avernus", 10, new double[] {0.5, 0.5, 0.5, 0, 0.5, 0.5, 0.5}, 16, DamageType.FIRE);
+        Enemy boss = new Enemy("", false, "Zariel, Archduke of Avernus", 15, new double[] {0.5, 0.5, 0.5, 0, 0.5, 0.5, 0.5}, 16, DamageType.FIRE);
         fight(new Enemy[] {boss}, player, 10);
     }
 
