@@ -39,37 +39,38 @@ public class Main {
 
     public static Enemy[] enemyList(double difficulty) {
 
-        Enemy e1 = new Enemy("Goblin", difficulty, new double[] {1, 1, 1, 1, 1, 1, 1}, 13, DamageType.PIERCING);
-        Enemy e2 = new Enemy("Cultist", difficulty, new double[] {1, 1.5, 1, 0, 1, 1, 1.5}, 10, DamageType.SLASHING);
-        Enemy e3 = new Enemy("Skeleton", difficulty, new double[] {5, 0, 0.5, 1, 0.5, 0, 1}, 12, DamageType.BLUDGEONING);
-        Enemy e4 = new Enemy("Dragon Goddess Tiamat", difficulty, new double[] {1, 1.5, 1, 0, 0, 0, 1}, 18, DamageType.FIRE);
-        Enemy e5 = new Enemy("Beholder", difficulty, new double[] {0.5, 1.5, 0.5, 1, 2, 1, 0}, 15, DamageType.PSYCHIC);
-        Enemy e6 = new Enemy("Obirith", difficulty, new double[] {0, 1, 0, 1.5, 1, 2, 1.5}, 14, DamageType.POISON);
-        Enemy e7 = new Enemy("Mad Wizard", difficulty, new double[] {Enemy.diceRoller(100)/70.0, Enemy.diceRoller(100)/70.0, Enemy.diceRoller(100)/70.0, Enemy.diceRoller(100)/70.0, Enemy.diceRoller(100)/70.0, Enemy.diceRoller(100)/70.0, Enemy.diceRoller(100) / 70.0}, 9, DamageType.FIRE);
-        Enemy e8 = new Enemy("Storm Giant", difficulty, new double[] {1, 2, 1, 1, 0, 0.5, 1}, 16, DamageType.ELECTRICITY);
-        Enemy e9 = new Enemy("Wraith", difficulty, new double[] {0.5, 1, 0, 1, 3, 0, 1}, 12, DamageType.POISON);
-        Enemy e10 = new Enemy("Red Slaad", difficulty, new double[] {1, 0.5, 0.75, 0, 2, 1.5, 0}, 12, DamageType.SLASHING);
-        Enemy e11 = new Enemy("Blue Slaad", difficulty, new double[] {1, 0.5, 0.75, 2, 0, 1.5, 0}, 12, DamageType.SLASHING);
-        Enemy e12 = new Enemy("Terminator", difficulty, new double[] {0.5, 1, 0, 1.5, 2.5, 0, 0}, 19, DamageType.BLUDGEONING);
-        Enemy e13 = new Enemy("Mr. Cosgrove", difficulty, new double[] {2, 2, 2, 2, 0, 2, -3}, 18, DamageType.PSYCHIC);
-        Enemy e14 = new Enemy("Sphinx", difficulty, new double[] {1, 1, 2, 0.25, 0.5, 1, 2}, 14, DamageType.PSYCHIC);
-        Enemy e15 = new Enemy("Atropal", difficulty, new double[] {0, 1.5, 0, 1, 0, 2, 0.75}, 8, DamageType.FIRE);
-        Enemy e16 = new Enemy("Baby Tarasque", difficulty, new double[] {0.5, 0.5, 0.5, 0.1, 5, 0.1, 1}, 15, DamageType.SLASHING);
+
+        Enemy e1 = new Enemy("A", true, "Goblin", difficulty, new double[] {1, 1, 1, 1, 1, 1, 1}, 13, DamageType.PIERCING);
+        Enemy e2 = new Enemy("A", true, "Cultist", difficulty, new double[] {1, 1.5, 1, 0, 1, 1, 1.5}, 10, DamageType.SLASHING);
+        Enemy e3 = new Enemy("A", true, "Skeleton", difficulty, new double[] {5, 0, 0.5, 1, 0.5, 0, 1}, 12, DamageType.BLUDGEONING);
+        Enemy e4 = new Enemy("The", true, "Dragon Goddess Tiamat", difficulty, new double[] {1, 1.5, 1, 0, 0, 0, 1}, 18, DamageType.FIRE);
+        Enemy e5 = new Enemy("A", true, "Beholder", difficulty, new double[] {0.5, 1.5, 0.5, 1, 2, 1, 0}, 15, DamageType.PSYCHIC);
+        Enemy e6 = new Enemy("An", true, "Obirith", difficulty, new double[] {0, 1, 0, 1.5, 1, 2, 1.5}, 14, DamageType.POISON);
+        Enemy e7 = new Enemy("A", true, "Mad Wizard", difficulty, new double[] {Enemy.diceRoller(100)/70.0, Enemy.diceRoller(100)/70.0, Enemy.diceRoller(100)/70.0, Enemy.diceRoller(100)/70.0, Enemy.diceRoller(100)/70.0, Enemy.diceRoller(100)/70.0, Enemy.diceRoller(100) / 70.0}, 9, DamageType.FIRE);
+        Enemy e8 = new Enemy("A", true, "Storm Giant", difficulty, new double[] {1, 2, 1, 1, 0, 0.5, 1}, 16, DamageType.ELECTRICITY);
+        Enemy e9 = new Enemy("A", true, "Wraith", difficulty, new double[] {0.5, 1, 0, 1, 3, 0, 1}, 12, DamageType.POISON);
+        Enemy e10 = new Enemy("A", true, "Red Slaad", difficulty, new double[] {1, 0.5, 0.75, 0, 2, 1.5, 0}, 12, DamageType.SLASHING);
+        Enemy e11 = new Enemy("A", true, "Blue Slaad", difficulty, new double[] {1, 0.5, 0.75, 2, 0, 1.5, 0}, 12, DamageType.SLASHING);
+        Enemy e12 = new Enemy("A", true, "Terminator", difficulty, new double[] {0.5, 1, 0, 1.5, 2.5, 0, 0}, 17, DamageType.BLUDGEONING);
+        Enemy e13 = new Enemy("", false, "Mr. Cosgrove", difficulty, new double[] {2, 2, 2, 2, 0, 2, -3}, 18, DamageType.PSYCHIC);
+        Enemy e14 = new Enemy("A", true, "Sphinx", difficulty, new double[] {1, 1, 2, 0.25, 0.5, 1, 2}, 14, DamageType.PSYCHIC);
+        Enemy e15 = new Enemy("An", true, "Atropal", difficulty, new double[] {0, 1.5, 0, 1, 0, 2, 0.75}, 8, DamageType.FIRE);
+        Enemy e16 = new Enemy("A", true, "Baby Tarasque", difficulty, new double[] {0.5, 0.5, 0.5, 0.1, 5, 0.1, 1}, 15, DamageType.SLASHING);
 
 
         return new Enemy[]{e1, e2, e3, e4, e5, e6, e7, e8, e9, e10, e11, e12, e13, e14, e15, e16};
-        //return new Enemy[] {e14};
     }
 
     public static void fight(Enemy[] eList, Player player, int roomNumber) {
+        boolean enrage = false;
         Enemy enemy = Enemy.spawnEnemy(eList);
         int entry = Enemy.diceRoller(5);
         String entMessage;
-        if (enemy.getEType() == "Mr. Cosgrove") {
+        if (enemy.getEType().equals("Mr. Cosgrove")) {
             entMessage = " walks slowly into the wroom while cackling maniacally!";
         }
         else if (enemy.getEType() == "Zariel, Archduke of Avernus") {
-            entMessage = "charges at you!";
+            entMessage = " charges at you!";
         }
         else if (entry == 1) {
             entMessage = " emerges from the shadows!";
@@ -82,9 +83,9 @@ public class Main {
         } else {
             entMessage = " pops into existence!";
         }
-        System.out.println("A " + enemy.getEType() + entMessage);
+        System.out.println(enemy.introduce() + " " + enemy.getEType() + entMessage);
 
-        if (enemy.getEType() == "Sphinx") {
+        if (enemy.getEType().equals("Sphinx")) {
             System.out.println("Answer me this, and you will be greatly rewarded. Answer wrong, and die painfully! Answer nothing, and I will not be as angry while fighting you.");
             System.out.println("Will you attempt to answer the Sphinx's riddle? (0 if No, 1 if Yes)");
             int riddler = input.nextInt();
@@ -110,23 +111,26 @@ public class Main {
             System.out.println("Your turn:");
             boolean running = true;
             while (running) {
-                System.out.println("Do you want to use a weapon, item, or spell? (WEAPON/ITEM/SPELL)");
+                System.out.println("Do you want to use a weapon, item, or spell? (WEAPON/ITEM/SPELL/ENRAGE)");
                 String choice;
                 choice = input.nextLine().toUpperCase();
 
                 switch (choice) {
                     case "ITEM" -> {
-                        System.out.println("Choose your item:");
                         System.out.println(player.showInventory());
                         if (player.getItemCount() == 0) {
                             System.out.println("You have no items.");
                         } else {
                             int itemSelect = input.nextInt();
                             input.nextLine();
-                            Item item = player.getItem(itemSelect);
-                            item.use();
-                            System.out.println("You use your " + item.getName() + ".");
-                            running = false;
+                            if (itemSelect < 15) {
+                                Item item = player.getItem(itemSelect);
+                                if (item != null) {
+                                    item.use();
+                                    System.out.println("You use your " + item.getName() + ".");
+                                    running = false;
+                                } else System.out.println("That's not a valid item.");
+                            }
                         }
                     }
                     case "WEAPON" -> {
@@ -134,23 +138,43 @@ public class Main {
                         System.out.println(player.weaponString());
                         int weaponSelect = input.nextInt();
                         input.nextLine();
-                        double dmg = player.damageToEnemy(enemy, weaponSelect);
-                        System.out.println("You attack the " + enemy.getEType() + " with your " + player.getWeapon(weaponSelect).getName() + ", doing " + dmg + " damage.");
-                        if (enemy.getEType().equals("Mr. Cosgrove") && player.getWeapon(weaponSelect).getType() == DamageType.PSYCHIC) {
-                            System.out.println("The mental pain only seems to heal him!");
+                        if (weaponSelect < 8) {
+                            if (player.getWeapon(weaponSelect).getLevel() > 0) {
+                                double dmg = player.damageToEnemy(enemy, weaponSelect);
+                                if (enemy.usesThe())
+                                    System.out.println("You attack the " + enemy.getEType() + " with your " + player.getWeapon(weaponSelect).getName() + ", doing " + dmg + " damage.");
+                                else
+                                    System.out.println("You attack " + enemy.getEType() + " with your " + player.getWeapon(weaponSelect).getName() + ", doing " + dmg + " damage.");
+                                if (enemy.getEType().equals("Mr. Cosgrove") && player.getWeapon(weaponSelect).getType() == DamageType.PSYCHIC) {
+                                    System.out.println("The mental pain only seems to heal him!");
+                                }
+                                running = false;
+                            } else System.out.println("You don't have that weapon.");
                         }
-                        running = false;
                     }
 
                     case "SPELL" -> {
-                        System.out.println("Choose your spell:");
                         System.out.println(player.showSpells());
-                        int spellSelect = input.nextInt();
-                        input.nextLine();
-                        Spell selection = player.getSpell(spellSelect);
-                        System.out.println("You use " + selection.getName() + ".");
-                        selection.cast(enemy);
-                        running = false;
+                        if (player.getSpellCount() > 0) {
+                            int spellSelect = input.nextInt();
+                            input.nextLine();
+                            if (spellSelect < 5) {
+                                Spell selection = player.getSpell(spellSelect);
+                                if (selection != null) {
+                                    System.out.println("You use " + selection.getName() + ".");
+                                    selection.cast(enemy);
+                                    running = false;
+                                } else System.out.println("That spell isn't available righ now.");
+                            } else System.out.println("You have no available spells right now.");
+                        }
+                    }
+                    case "ENRAGE" -> {
+                        if (enrage == true) {
+                            System.out.println("You won't get any extra rewards for doing this, but if you want to...");
+                        }
+                        System.out.println("The enemy is furious!!!");
+                        enrage = true;
+                        enemy = Enemy.enrage(enemy);
                     }
                 }
             }
@@ -167,7 +191,14 @@ public class Main {
                 System.exit(0);
             }
             if (enemy.getHealth() <= 0) {
-                System.out.println("The " + enemy.getEType() + " has been slain!");
+                if (enemy.usesThe()) System.out.println("The " + enemy.getEType() + " has been slain!");
+                else System.out.println(enemy.getEType() + " has been slain!");
+                if (enrage) {
+                    System.out.println("Because you enraged the enemy, you are rewarded!");
+                    rewards(player);
+                    rewards(player);
+                    player.heal();
+                }
             }
 
         }
@@ -315,7 +346,7 @@ public class Main {
 
     public static void finalBoss(Player player) {
         System.out.println("You enter a throne room. Your journey is almost over...");
-        Enemy boss = new Enemy(" Zariel, Archduke of Avernus", 50, new double[] {0.5, 0.5, 0.5, 0, 0.5, 0.5, 0.5}, 18, DamageType.FIRE);
+        Enemy boss = new Enemy("", false, "Zariel, Archduke of Avernus", 15, new double[] {0.5, 0.5, 0.5, 0, 0.5, 0.5, 0.5}, 16, DamageType.FIRE);
         fight(new Enemy[] {boss}, player, 10);
     }
 

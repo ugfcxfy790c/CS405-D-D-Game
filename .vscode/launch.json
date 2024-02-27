@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Enemy",
+            "request": "launch",
+            "mainClass": "Enemy",
+            "projectName": "CS405-D-D-Game_18c548f5"
+        },
+        {
+            "type": "java",
             "name": "Main",
             "request": "launch",
             "mainClass": "Main",

@@ -7,11 +7,13 @@ public class Player {
     private double atk;
     private double[] res;
     private int itemCount;
+    private int spellCount;
     private boolean lucky;
     private Spell[] spells;
 
 
     public Player(double health, int aC, int atk) {
+        this.spellCount = 0;
         this.lucky = false;
         this.health = health;
         this.aC = aC;
@@ -69,6 +71,10 @@ public class Player {
                 spell.charge();
             }
         }
+    }
+
+    public int getSpellCount() {
+        return this.spellCount;
     }
 
     public double getRes(DamageType type) {
@@ -157,10 +163,12 @@ public class Player {
     }
 
     public String showSpells() {
+        this.spellCount = 0;
         String print= "";
         for (int i = 0; i < this.spells.length; i++) {
-            if (this.spells[i].isCharged()) {
+            if (this.spells[i] != null && this.spells[i].isCharged()) {
                 print += i + ": " + this.spells[i].getName() + "    ";
+                this.spellCount++;
             }
         }
         return print;
@@ -175,11 +183,19 @@ public class Player {
         }
     }
 
+    public void heal() {
+        this.health += 25;
+    }
+
     public void addSpell(Spell spell) {
+        if (spell == null) return;
+        for (Spell check: this.spells) {
+            if (check != null && spell.getName().equals(check.getName())) return;
+        }
         for (int i = 0; i < this.spells.length; i++) {
             if (this.spells[i] == null) {
                 this.spells[i] = spell;
-                if (spell != null) System.out.println("You unlocked " + spell.getName() + ".");
+                System.out.println("You unlocked " + spell.getName() + ".");
                 break;
             }
         }

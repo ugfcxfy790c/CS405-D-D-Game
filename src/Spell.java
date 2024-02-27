@@ -56,5 +56,4 @@ public class Spell {
         }
         this.charge = 0;
     }
-
 }
