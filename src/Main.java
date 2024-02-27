@@ -134,12 +134,15 @@ public class Main {
                         System.out.println(player.weaponString());
                         int weaponSelect = input.nextInt();
                         input.nextLine();
-                        double dmg = player.damageToEnemy(enemy, weaponSelect);
-                        System.out.println("You attack the " + enemy.getEType() + " with your " + player.getWeapon(weaponSelect).getName() + ", doing " + dmg + " damage.");
-                        if (enemy.getEType().equals("Mr. Cosgrove") && player.getWeapon(weaponSelect).getType() == DamageType.PSYCHIC) {
-                            System.out.println("The mental pain only seems to heal him!");
+                        if (player.getWeapon(weaponSelect).getLevel() > 0) {
+                            double dmg = player.damageToEnemy(enemy, weaponSelect);
+                            System.out.println("You attack the " + enemy.getEType() + " with your " + player.getWeapon(weaponSelect).getName() + ", doing " + dmg + " damage.");
+                            if (enemy.getEType().equals("Mr. Cosgrove") && player.getWeapon(weaponSelect).getType() == DamageType.PSYCHIC) {
+                                System.out.println("The mental pain only seems to heal him!");
+                            }
+                            running = false;
                         }
-                        running = false;
+                        else System.out.println("You don't have that weapon.");
                     }
 
                     case "SPELL" -> {
