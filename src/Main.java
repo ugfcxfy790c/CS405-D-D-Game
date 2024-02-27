@@ -1,3 +1,5 @@
+// Developed by Mitchell Carson, Eli Orbach, and Han Yan
+
 import java.util.Scanner;
 public class Main {
 
