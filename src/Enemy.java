@@ -122,7 +122,6 @@ public static void main(String[] args) {
     public static Enemy enrage(Enemy enemy) {
         enemy.health *= 10;
         enemy.atk += 4;
-        System.out.println(enemy.getAtk());
         enemy.aC += 3;
         return enemy;
     }
