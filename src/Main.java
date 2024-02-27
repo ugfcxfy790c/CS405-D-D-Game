@@ -57,7 +57,8 @@ public class Main {
         Enemy e16 = new Enemy("A", true, "Baby Tarasque", difficulty, new double[] {0.5, 0.5, 0.5, 0.1, 5, 0.1, 1}, 15, DamageType.SLASHING);
 
 
-        return new Enemy[]{e1, e2, e3, e4, e5, e6, e7, e8, e9, e10, e11, e12, e13, e14, e15, e16};
+        //return new Enemy[]{e1, e2, e3, e4, e5, e6, e7, e8, e9, e10, e11, e12, e13, e14, e15, e16};
+        return new Enemy[] {e13};
 
     }
 
@@ -187,7 +188,8 @@ public class Main {
                 System.exit(0);
             }
             if (enemy.getHealth() <= 0) {
-                System.out.println("The " + enemy.getEType() + " has been slain!");
+                if (enemy.usesThe()) System.out.println("The " + enemy.getEType() + " has been slain!");
+                else System.out.println(enemy.getEType() + " has been slain!");
                 if (enrage) {
                     System.out.println("Because you enraged the enemy, you are rewarded!");
                     rewards(player);
