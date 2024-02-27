@@ -124,9 +124,12 @@ public class Main {
                             int itemSelect = input.nextInt();
                             input.nextLine();
                             Item item = player.getItem(itemSelect);
-                            item.use();
-                            System.out.println("You use your " + item.getName() + ".");
-                            running = false;
+                            if (item != null) {
+                                item.use();
+                                System.out.println("You use your " + item.getName() + ".");
+                                running = false;
+                            }
+                            else System.out.println("That's not a valid item.");
                         }
                     }
                     case "WEAPON" -> {
@@ -151,9 +154,12 @@ public class Main {
                             int spellSelect = input.nextInt();
                             input.nextLine();
                             Spell selection = player.getSpell(spellSelect);
-                            System.out.println("You use " + selection.getName() + ".");
-                            selection.cast(enemy);
-                            running = false;
+                            if (selection != null) {
+                                System.out.println("You use " + selection.getName() + ".");
+                                selection.cast(enemy);
+                                running = false;
+                            }
+                            else System.out.println("That spell isn't available righ now.");
                         }
                         else System.out.println("You have no available spells right now.");
                     }
