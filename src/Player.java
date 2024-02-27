@@ -184,6 +184,9 @@ public class Player {
     }
 
     public void addSpell(Spell spell) {
+        for (Spell check: this.spells) {
+            if (spell == check) return;
+        }
         for (int i = 0; i < this.spells.length; i++) {
             if (this.spells[i] == null) {
                 this.spells[i] = spell;
