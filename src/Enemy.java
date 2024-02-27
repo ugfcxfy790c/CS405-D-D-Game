@@ -5,18 +5,22 @@ public class Enemy {
 public static void main(String[] args) {
 
 }   
-    private String EType;
-    private double difficulty;
+    private final String EType;
+    private final String introductor;
+    private final double difficulty;
     private double[] res;
     private double health;
     private double atk;
     private double maxDmg;
-    private DamageType type;
+    private final DamageType type;
     private int aC;
     private boolean blinded;
+    private boolean the;
     static Random dice = new Random();
     
-    public Enemy(String EType, double difficulty, double[] res, int aC, DamageType type) {
+    public Enemy(String intro, boolean the, String EType, double difficulty, double[] res, int aC, DamageType type) {
+        this.the = the;
+        this.introductor = intro;
         this.blinded = false;
         this.EType = EType;
         this.difficulty = difficulty;
@@ -84,9 +88,13 @@ public static void main(String[] args) {
         return this.atk;
     }
 
+    public boolean usesThe() { return this.the; }
+
     public void blind() {
         this.blinded = true;
     }
+
+    public String introduce() { return this.introductor; }
 
     public void setMaxDmg(double multiplier) {
         this.maxDmg *= multiplier;
