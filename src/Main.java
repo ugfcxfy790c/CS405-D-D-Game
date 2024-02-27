@@ -124,9 +124,12 @@ public class Main {
                             int itemSelect = input.nextInt();
                             input.nextLine();
                             Item item = player.getItem(itemSelect);
-                            item.use();
-                            System.out.println("You use your " + item.getName() + ".");
-                            running = false;
+                            if (item != null) {
+                                item.use();
+                                System.out.println("You use your " + item.getName() + ".");
+                                running = false;
+                            }
+                            else System.out.println("That's not a valid item.");
                         }
                     }
                     case "WEAPON" -> {
@@ -134,12 +137,15 @@ public class Main {
                         System.out.println(player.weaponString());
                         int weaponSelect = input.nextInt();
                         input.nextLine();
-                        double dmg = player.damageToEnemy(enemy, weaponSelect);
-                        System.out.println("You attack the " + enemy.getEType() + " with your " + player.getWeapon(weaponSelect).getName() + ", doing " + dmg + " damage.");
-                        if (enemy.getEType().equals("Mr. Cosgrove") && player.getWeapon(weaponSelect).getType() == DamageType.PSYCHIC) {
-                            System.out.println("The mental pain only seems to heal him!");
+                        if (player.getWeapon(weaponSelect).getLevel() > 0) {
+                            double dmg = player.damageToEnemy(enemy, weaponSelect);
+                            System.out.println("You attack the " + enemy.getEType() + " with your " + player.getWeapon(weaponSelect).getName() + ", doing " + dmg + " damage.");
+                            if (enemy.getEType().equals("Mr. Cosgrove") && player.getWeapon(weaponSelect).getType() == DamageType.PSYCHIC) {
+                                System.out.println("The mental pain only seems to heal him!");
+                            }
+                            running = false;
                         }
-                        running = false;
+                        else System.out.println("You don't have that weapon.");
                     }
 
                     case "SPELL" -> {
@@ -148,9 +154,12 @@ public class Main {
                             int spellSelect = input.nextInt();
                             input.nextLine();
                             Spell selection = player.getSpell(spellSelect);
-                            System.out.println("You use " + selection.getName() + ".");
-                            selection.cast(enemy);
-                            running = false;
+                            if (selection != null) {
+                                System.out.println("You use " + selection.getName() + ".");
+                                selection.cast(enemy);
+                                running = false;
+                            }
+                            else System.out.println("That spell isn't available righ now.");
                         }
                         else System.out.println("You have no available spells right now.");
                     }
