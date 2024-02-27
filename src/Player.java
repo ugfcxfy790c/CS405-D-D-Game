@@ -183,14 +183,19 @@ public class Player {
         }
     }
 
+    public void heal() {
+        this.health += 25;
+    }
+
     public void addSpell(Spell spell) {
+        if (spell == null) return;
         for (Spell check: this.spells) {
-            if (spell == check) return;
+            if (check != null && spell.getName().equals(check.getName())) return;
         }
         for (int i = 0; i < this.spells.length; i++) {
             if (this.spells[i] == null) {
                 this.spells[i] = spell;
-                if (spell != null) System.out.println("You unlocked " + spell.getName() + ".");
+                System.out.println("You unlocked " + spell.getName() + ".");
                 break;
             }
         }
