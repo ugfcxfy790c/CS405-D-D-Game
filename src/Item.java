@@ -26,7 +26,7 @@ public class Item {
             case PIERCING -> this.name = "shield";
             case PSYCHIC -> this.name = "ring of mind shielding";
             case HEALTH -> this.name = "potion of healing";
-            case INVINCIBILITY -> this.name = "spell of invincibility";
+            case INVINCIBILITY -> this.name = "potion of invincibility";
             case POWER -> this.name = "ring of power";
         }
     }
