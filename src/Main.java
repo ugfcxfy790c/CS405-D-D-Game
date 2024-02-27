@@ -58,7 +58,6 @@ public class Main {
 
 
         return new Enemy[]{e1, e2, e3, e4, e5, e6, e7, e8, e9, e10, e11, e12, e13, e14, e15, e16};
-
     }
 
     public static void fight(Enemy[] eList, Player player, int roomNumber) {
@@ -187,7 +186,8 @@ public class Main {
                 System.exit(0);
             }
             if (enemy.getHealth() <= 0) {
-                System.out.println("The " + enemy.getEType() + " has been slain!");
+                if (enemy.usesThe()) System.out.println("The " + enemy.getEType() + " has been slain!");
+                else System.out.println(enemy.getEType() + " has been slain!");
                 if (enrage) {
                     System.out.println("Because you enraged the enemy, you are rewarded!");
                     rewards(player);
