@@ -70,7 +70,7 @@ public class Main {
             entMessage = " walks slowly into the wroom while cackling maniacally!";
         }
         else if (enemy.getEType() == "Zariel, Archduke of Avernus") {
-            entMessage = "charges at you!";
+            entMessage = " charges at you!";
         }
         else if (entry == 1) {
             entMessage = " emerges from the shadows!";
@@ -328,7 +328,7 @@ public class Main {
 
     public static void finalBoss(Player player) {
         System.out.println("You enter a throne room. Your journey is almost over...");
-        Enemy boss = new Enemy(" Zariel, Archduke of Avernus", 10, new double[] {0.5, 0.5, 0.5, 0, 0.5, 0.5, 0.5}, 18, DamageType.FIRE);
+        Enemy boss = new Enemy("Zariel, Archduke of Avernus", 10, new double[] {0.5, 0.5, 0.5, 0, 0.5, 0.5, 0.5}, 16, DamageType.FIRE);
         fight(new Enemy[] {boss}, player, 10);
     }
 
