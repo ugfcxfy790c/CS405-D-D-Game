@@ -122,13 +122,14 @@ public class Main {
                         } else {
                             int itemSelect = input.nextInt();
                             input.nextLine();
-                            Item item = player.getItem(itemSelect);
-                            if (item != null) {
-                                item.use();
-                                System.out.println("You use your " + item.getName() + ".");
-                                running = false;
+                            if (itemSelect < 15) {
+                                Item item = player.getItem(itemSelect);
+                                if (item != null) {
+                                    item.use();
+                                    System.out.println("You use your " + item.getName() + ".");
+                                    running = false;
+                                } else System.out.println("That's not a valid item.");
                             }
-                            else System.out.println("That's not a valid item.");
                         }
                     }
                     case "WEAPON" -> {
@@ -136,16 +137,19 @@ public class Main {
                         System.out.println(player.weaponString());
                         int weaponSelect = input.nextInt();
                         input.nextLine();
-                        if (player.getWeapon(weaponSelect).getLevel() > 0) {
-                            double dmg = player.damageToEnemy(enemy, weaponSelect);
-                            if (enemy.usesThe()) System.out.println("You attack the " + enemy.getEType() + " with your " + player.getWeapon(weaponSelect).getName() + ", doing " + dmg + " damage.");
-                            else System.out.println("You attack " + enemy.getEType() + " with your " + player.getWeapon(weaponSelect).getName() + ", doing " + dmg + " damage.");
-                            if (enemy.getEType().equals("Mr. Cosgrove") && player.getWeapon(weaponSelect).getType() == DamageType.PSYCHIC) {
-                                System.out.println("The mental pain only seems to heal him!");
-                            }
-                            running = false;
+                        if (weaponSelect < 8) {
+                            if (player.getWeapon(weaponSelect).getLevel() > 0) {
+                                double dmg = player.damageToEnemy(enemy, weaponSelect);
+                                if (enemy.usesThe())
+                                    System.out.println("You attack the " + enemy.getEType() + " with your " + player.getWeapon(weaponSelect).getName() + ", doing " + dmg + " damage.");
+                                else
+                                    System.out.println("You attack " + enemy.getEType() + " with your " + player.getWeapon(weaponSelect).getName() + ", doing " + dmg + " damage.");
+                                if (enemy.getEType().equals("Mr. Cosgrove") && player.getWeapon(weaponSelect).getType() == DamageType.PSYCHIC) {
+                                    System.out.println("The mental pain only seems to heal him!");
+                                }
+                                running = false;
+                            } else System.out.println("You don't have that weapon.");
                         }
-                        else System.out.println("You don't have that weapon.");
                     }
 
                     case "SPELL" -> {
@@ -153,15 +157,15 @@ public class Main {
                         if (player.getSpellCount() > 0) {
                             int spellSelect = input.nextInt();
                             input.nextLine();
-                            Spell selection = player.getSpell(spellSelect);
-                            if (selection != null) {
-                                System.out.println("You use " + selection.getName() + ".");
-                                selection.cast(enemy);
-                                running = false;
-                            }
-                            else System.out.println("That spell isn't available righ now.");
+                            if (spellSelect < 5) {
+                                Spell selection = player.getSpell(spellSelect);
+                                if (selection != null) {
+                                    System.out.println("You use " + selection.getName() + ".");
+                                    selection.cast(enemy);
+                                    running = false;
+                                } else System.out.println("That spell isn't available righ now.");
+                            } else System.out.println("You have no available spells right now.");
                         }
-                        else System.out.println("You have no available spells right now.");
                     }
                     case "ENRAGE" -> {
                         if (enrage == true) {
