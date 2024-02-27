@@ -112,7 +112,7 @@ public static void main(String[] args) {
     }
 
     private int dmgRollPlayer() {
-       return diceRoller((int)this.maxDmg);
+       return diceRoller((int)this.maxDmg) + (int)this.atk;
     }
 
     public static Enemy spawnEnemy(Enemy[] eList) {
@@ -122,6 +122,7 @@ public static void main(String[] args) {
     public static Enemy enrage(Enemy enemy) {
         enemy.health *= 10;
         enemy.atk += 4;
+        System.out.println(enemy.getAtk());
         enemy.aC += 3;
         return enemy;
     }
