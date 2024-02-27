@@ -39,22 +39,22 @@ public class Main {
 
     public static Enemy[] enemyList(double difficulty) {
 
-        Enemy e1 = new Enemy("A", "Goblin", difficulty, new double[] {1, 1, 1, 1, 1, 1, 1}, 13, DamageType.PIERCING);
-        Enemy e2 = new Enemy("A", "Cultist", difficulty, new double[] {1, 1.5, 1, 0, 1, 1, 1.5}, 10, DamageType.SLASHING);
-        Enemy e3 = new Enemy("A", "Skeleton", difficulty, new double[] {5, 0, 0.5, 1, 0.5, 0, 1}, 12, DamageType.BLUDGEONING);
-        Enemy e4 = new Enemy("The", "Dragon Goddess Tiamat", difficulty, new double[] {1, 1.5, 1, 0, 0, 0, 1}, 18, DamageType.FIRE);
-        Enemy e5 = new Enemy("A", "Beholder", difficulty, new double[] {0.5, 1.5, 0.5, 1, 2, 1, 0}, 15, DamageType.PSYCHIC);
-        Enemy e6 = new Enemy("An", "Obirith", difficulty, new double[] {0, 1, 0, 1.5, 1, 2, 1.5}, 14, DamageType.POISON);
-        Enemy e7 = new Enemy("A", "Mad Wizard", difficulty, new double[] {Enemy.diceRoller(100)/70.0, Enemy.diceRoller(100)/70.0, Enemy.diceRoller(100)/70.0, Enemy.diceRoller(100)/70.0, Enemy.diceRoller(100)/70.0, Enemy.diceRoller(100)/70.0, Enemy.diceRoller(100) / 70.0}, 9, DamageType.FIRE);
-        Enemy e8 = new Enemy("A", "Storm Giant", difficulty, new double[] {1, 2, 1, 1, 0, 0.5, 1}, 16, DamageType.ELECTRICITY);
-        Enemy e9 = new Enemy("A", "Wraith", difficulty, new double[] {0.5, 1, 0, 1, 3, 0, 1}, 12, DamageType.POISON);
-        Enemy e10 = new Enemy("A", "Red Slaad", difficulty, new double[] {1, 0.5, 0.75, 0, 2, 1.5, 0}, 12, DamageType.SLASHING);
-        Enemy e11 = new Enemy("A", "Blue Slaad", difficulty, new double[] {1, 0.5, 0.75, 2, 0, 1.5, 0}, 12, DamageType.SLASHING);
-        Enemy e12 = new Enemy("A", "Terminator", difficulty, new double[] {0.5, 1, 0, 1.5, 2.5, 0, 0}, 19, DamageType.BLUDGEONING);
-        Enemy e13 = new Enemy("", "Mr. Cosgrove", difficulty, new double[] {2, 2, 2, 2, 0, 2, -3}, 18, DamageType.PSYCHIC);
-        Enemy e14 = new Enemy("A", "Sphinx", difficulty, new double[] {1, 1, 2, 0.25, 0.5, 1, 2}, 14, DamageType.PSYCHIC);
-        Enemy e15 = new Enemy("An", "Atropal", difficulty, new double[] {0, 1.5, 0, 1, 0, 2, 0.75}, 8, DamageType.FIRE);
-        Enemy e16 = new Enemy("A", "Baby Tarasque", difficulty, new double[] {0.5, 0.5, 0.5, 0.1, 5, 0.1, 1}, 15, DamageType.SLASHING);
+        Enemy e1 = new Enemy("A", true, "Goblin", difficulty, new double[] {1, 1, 1, 1, 1, 1, 1}, 13, DamageType.PIERCING);
+        Enemy e2 = new Enemy("A", true, "Cultist", difficulty, new double[] {1, 1.5, 1, 0, 1, 1, 1.5}, 10, DamageType.SLASHING);
+        Enemy e3 = new Enemy("A", true, "Skeleton", difficulty, new double[] {5, 0, 0.5, 1, 0.5, 0, 1}, 12, DamageType.BLUDGEONING);
+        Enemy e4 = new Enemy("The", true, "Dragon Goddess Tiamat", difficulty, new double[] {1, 1.5, 1, 0, 0, 0, 1}, 18, DamageType.FIRE);
+        Enemy e5 = new Enemy("A", true, "Beholder", difficulty, new double[] {0.5, 1.5, 0.5, 1, 2, 1, 0}, 15, DamageType.PSYCHIC);
+        Enemy e6 = new Enemy("An", true, "Obirith", difficulty, new double[] {0, 1, 0, 1.5, 1, 2, 1.5}, 14, DamageType.POISON);
+        Enemy e7 = new Enemy("A", true, "Mad Wizard", difficulty, new double[] {Enemy.diceRoller(100)/70.0, Enemy.diceRoller(100)/70.0, Enemy.diceRoller(100)/70.0, Enemy.diceRoller(100)/70.0, Enemy.diceRoller(100)/70.0, Enemy.diceRoller(100)/70.0, Enemy.diceRoller(100) / 70.0}, 9, DamageType.FIRE);
+        Enemy e8 = new Enemy("A", true, "Storm Giant", difficulty, new double[] {1, 2, 1, 1, 0, 0.5, 1}, 16, DamageType.ELECTRICITY);
+        Enemy e9 = new Enemy("A", true, "Wraith", difficulty, new double[] {0.5, 1, 0, 1, 3, 0, 1}, 12, DamageType.POISON);
+        Enemy e10 = new Enemy("A", true, "Red Slaad", difficulty, new double[] {1, 0.5, 0.75, 0, 2, 1.5, 0}, 12, DamageType.SLASHING);
+        Enemy e11 = new Enemy("A", true, "Blue Slaad", difficulty, new double[] {1, 0.5, 0.75, 2, 0, 1.5, 0}, 12, DamageType.SLASHING);
+        Enemy e12 = new Enemy("A", true, "Terminator", difficulty, new double[] {0.5, 1, 0, 1.5, 2.5, 0, 0}, 19, DamageType.BLUDGEONING);
+        Enemy e13 = new Enemy("", false, "Mr. Cosgrove", difficulty, new double[] {2, 2, 2, 2, 0, 2, -3}, 18, DamageType.PSYCHIC);
+        Enemy e14 = new Enemy("A", true, "Sphinx", difficulty, new double[] {1, 1, 2, 0.25, 0.5, 1, 2}, 14, DamageType.PSYCHIC);
+        Enemy e15 = new Enemy("An", true, "Atropal", difficulty, new double[] {0, 1.5, 0, 1, 0, 2, 0.75}, 8, DamageType.FIRE);
+        Enemy e16 = new Enemy("A", true, "Baby Tarasque", difficulty, new double[] {0.5, 0.5, 0.5, 0.1, 5, 0.1, 1}, 15, DamageType.SLASHING);
 
 
         return new Enemy[]{e1, e2, e3, e4, e5, e6, e7, e8, e9, e10, e11, e12, e13, e14, e15, e16};
@@ -139,7 +139,8 @@ public class Main {
                         input.nextLine();
                         if (player.getWeapon(weaponSelect).getLevel() > 0) {
                             double dmg = player.damageToEnemy(enemy, weaponSelect);
-                            System.out.println("You attack the " + enemy.getEType() + " with your " + player.getWeapon(weaponSelect).getName() + ", doing " + dmg + " damage.");
+                            if (enemy.usesThe()) System.out.println("You attack the " + enemy.getEType() + " with your " + player.getWeapon(weaponSelect).getName() + ", doing " + dmg + " damage.");
+                            else System.out.println("You attack " + enemy.getEType() + " with your " + player.getWeapon(weaponSelect).getName() + ", doing " + dmg + " damage.");
                             if (enemy.getEType().equals("Mr. Cosgrove") && player.getWeapon(weaponSelect).getType() == DamageType.PSYCHIC) {
                                 System.out.println("The mental pain only seems to heal him!");
                             }
@@ -340,7 +341,7 @@ public class Main {
 
     public static void finalBoss(Player player) {
         System.out.println("You enter a throne room. Your journey is almost over...");
-        Enemy boss = new Enemy("", "Zariel, Archduke of Avernus", 10, new double[] {0.5, 0.5, 0.5, 0, 0.5, 0.5, 0.5}, 16, DamageType.FIRE);
+        Enemy boss = new Enemy("", false, "Zariel, Archduke of Avernus", 10, new double[] {0.5, 0.5, 0.5, 0, 0.5, 0.5, 0.5}, 16, DamageType.FIRE);
         fight(new Enemy[] {boss}, player, 10);
     }
 
