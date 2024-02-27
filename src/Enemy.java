@@ -67,11 +67,15 @@ public static void main(String[] args) {
     }
 
     public void randomizeRes() {
+        if (this.getEType() == "Mad Wizard") {
+            System.out.println("You attempt to use my own spells against me?!");
+            enrage(this);
+        }
         for (int i = 0; i < this.res.length; i++) {
             this.res[i] = (dice.nextDouble() * 2) + 0.1;
         }
     }
-
+ 
     public double getHealth() {
         return this.health;
     }
