@@ -181,6 +181,7 @@ public class Main {
                 if (enrage) {
                     System.out.println("Because you enraged the enemy, you are rewarded!");
                     rewards(player);
+                    rewards(player);
                 }
             }
 
