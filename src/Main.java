@@ -67,7 +67,24 @@ public class Main {
         boolean enrage = false;
         Enemy enemy = Enemy.spawnEnemy(eList);
         int entry = Enemy.diceRoller(5);
-        String entMessage = getString(enemy, entry);
+        String entMessage;
+        if (enemy.getEType().equals("Mr. Cosgrove")) {
+            entMessage = " walks slowly into the wroom while cackling maniacally!";
+        }
+        else if (enemy.getEType().equals("Zariel, Archduke of Avernus")) {
+            entMessage = " charges at you!";
+        }
+        else if (entry == 1) {
+            entMessage = " emerges from the shadows!";
+        } else if (entry == 2) {
+            entMessage = " enters the room and screams!";
+        } else if (entry == 3) {
+            entMessage = " is released from storage into the room!";
+        } else if (entry == 4) {
+            entMessage = " drops down from the ceiling!";
+        } else {
+            entMessage = " pops into existence!";
+        }
         System.out.println(enemy.introduce() + " " + enemy.getEType() + entMessage);
 
         if (enemy.getEType().equals("Sphinx")) {
@@ -122,7 +139,6 @@ public class Main {
                         System.out.println("Choose your weapon:");
                         System.out.println(player.weaponString());
                         int weaponSelect = input.nextInt();
-                        input.nextLine();
                         if (weaponSelect < 8) {
                             if (player.getWeapon(weaponSelect).getLevel() > 0) {
                                 double dmg = player.damageToEnemy(enemy, weaponSelect);
@@ -154,7 +170,7 @@ public class Main {
                         }
                     }
                     case "ENRAGE" -> {
-                        if (enrage == true) {
+                        if (enrage) {
                             System.out.println("You won't get any extra rewards for doing this, but if you want to...");
                         }
                         System.out.println("The enemy is furious!!!");
@@ -187,28 +203,6 @@ public class Main {
             }
 
         }
-    }
-
-    private static String getString(Enemy enemy, int entry) {
-        String entMessage;
-        if (enemy.getEType().equals("Mr. Cosgrove")) {
-            entMessage = " walks slowly into the wroom while cackling maniacally!";
-        }
-        else if (enemy.getEType() == "Zariel, Archduke of Avernus") {
-            entMessage = " charges at you!";
-        }
-        else if (entry == 1) {
-            entMessage = " emerges from the shadows!";
-        } else if (entry == 2) {
-            entMessage = " enters the room and screams!";
-        } else if (entry == 3) {
-            entMessage = " is released from storage into the room!";
-        } else if (entry == 4) {
-            entMessage = " drops down from the ceiling!";
-        } else {
-            entMessage = " pops into existence!";
-        }
-        return entMessage;
     }
 
     public static void rewards (Player player){
